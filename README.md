@@ -2,9 +2,10 @@
 
 A static Astro website for research, publications, and academic experience.
 
-- **Live website:** https://ydegefu-research.vercel.app
+- **GitHub Pages:** https://yonaneg.github.io/academic-website/
 - **Source:** https://github.com/YonaNeg/academic-website
-- **Hosting:** https://vercel.com/dashboard (sign in with the account connected to this project)
+- **Deployment workflow:** `.github/workflows/deploy.yml`
+- **Pages settings:** https://github.com/YonaNeg/academic-website/settings/pages
 
 ## Run locally
 
@@ -44,12 +45,17 @@ The production files are generated in `dist/`. Development and preview servers b
 | CV section (education only) | `src/pages/cv.astro` |
 | Navigation, metadata, and footer | `src/layouts/BaseLayout.astro` |
 | Shared theme and responsive styles | `src/styles/site.css` |
-| Browser security headers | `vercel.json` |
+| Page security policy and referrer policy | `src/layouts/BaseLayout.astro` |
+| Optional Vercel response headers | `vercel.json` |
 
 The CV webpage contains education only, with the updated PDF available at `public/files/cv.pdf`. The homepage portrait is optimized by Astro when the site builds. Publication figures live in `public/images/publications/`; each entry links to its original full-size figure. The homepage and publication page share the same records, including publication status, author lists, and links.
 
 ## Publish
 
-Review `git status` and `git diff`, build, then stage the intended files and commit. Pushing to the connected production branch normally triggers Vercel. Confirm the result in the Vercel dashboard; local edits do not change the live site.
+Enable **Settings → Pages → Source: GitHub Actions** for this repository. The pinned deployment workflow builds and publishes pushes to `main`; it can also be started manually from the Actions tab. Confirm a successful deployment in GitHub Actions before checking the public URL.
+
+Review `git status` and `git diff`, build, then stage the intended files and commit. Local edits do not change the live website.
+
+The workflow sets `GITHUB_PAGES=true`, and Astro derives its GitHub domain and repository path from `GITHUB_REPOSITORY`. Internal links and public assets use a shared path helper. Normal local development and optional Vercel builds continue to use root paths. A repository named `YonaNeg.github.io` automatically uses the root GitHub Pages URL instead.
 
 See [MAINTENANCE_GUIDE.md](MAINTENANCE_GUIDE.md) for the full workflow, [QUICK_REFERENCE.md](QUICK_REFERENCE.md) for common commands, and [SECURITY_REVIEW.md](SECURITY_REVIEW.md) for the security review and its limits.

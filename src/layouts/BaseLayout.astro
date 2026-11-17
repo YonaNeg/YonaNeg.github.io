@@ -1,13 +1,15 @@
 ---
 import '../styles/site.css';
+import { withBase } from '../utils/paths';
 interface Props { title: string; description?: string; }
 const { title, description = 'Yonatan N. Degefu — biomedical engineering, computational cancer biology, and quantitative systems pharmacology at the University of Virginia.' } = Astro.props;
 const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
 const canonical = new URL(Astro.url.pathname, Astro.site);
+const contentSecurityPolicy = "default-src 'none'; script-src 'none'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; upgrade-insecure-requests";
 const links = [
-  { href: '/', label: 'Home' }, { href: '/about', label: 'About' },
-  { href: '/research', label: 'Research' }, { href: '/publications', label: 'Publications' },
-  { href: '/cv', label: 'CV' },
+  { href: withBase('/'), label: 'Home' }, { href: withBase('/about/'), label: 'About' },
+  { href: withBase('/research/'), label: 'Research' }, { href: withBase('/publications/'), label: 'Publications' },
+  { href: withBase('/cv/'), label: 'CV' },
 ];
 ---
 <!DOCTYPE html>
@@ -15,6 +17,8 @@ const links = [
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {import.meta.env.PROD && <meta http-equiv="Content-Security-Policy" content={contentSecurityPolicy} />}
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
     <meta name="description" content={description} />
     <meta name="color-scheme" content="light" />
     <meta name="theme-color" content="#ffffff" />
@@ -23,24 +27,24 @@ const links = [
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <link rel="canonical" href={canonical} />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href={withBase('/favicon.svg')} />
     <title>{title}</title>
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to content</a>
     <header class="site-header">
       <nav class="nav-container" aria-label="Main navigation">
-        <a href="/" class="logo" aria-label="Yonatan N. Degefu, home">Yonatan N. Degefu</a>
+        <a href={withBase('/')} class="logo" aria-label="Yonatan N. Degefu, home">Yonatan N. Degefu</a>
         <ul class="nav-links">
           {links.map(({ href, label }) => (
-            <li><a href={href} aria-current={currentPath === href ? 'page' : undefined}>{label}</a></li>
+            <li><a href={href} aria-current={currentPath === (href.replace(/\/$/, '') || '/') ? 'page' : undefined}>{label}</a></li>
           ))}
         </ul>
       </nav>
     </header>
     <main id="main-content" tabindex="-1"><slot /></main>
     <footer class="site-footer">
-      <div><a class="footer-name" href="/">Yonatan N. Degefu</a><p>Biomedical engineering · Computational biology</p></div>
+      <div><a class="footer-name" href={withBase('/')}>Yonatan N. Degefu</a><p>Biomedical engineering · Computational biology</p></div>
       <div class="footer-contact"><a href="mailto:njr7jk@virginia.edu">njr7jk@virginia.edu</a><p>&copy; {new Date().getFullYear()} · Charlottesville, Virginia</p></div>
     </footer>
   </body>

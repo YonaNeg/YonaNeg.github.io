@@ -59,3 +59,13 @@ The final fresh npm audit reports 10 high-severity affected dependency packages,
 For this release, picomatch is used by the Astro/Vite build-tool dependency tree. The application accepts no user-supplied glob patterns. The verified deployment output contains five static HTML pages and static assets, with no JavaScript files or application server handlers. The matching library is not part of the served output. Based on that architecture, no visitor-reachable path to the affected function was identified. This is an applicability assessment, not a patched dependency or a claim of a clean audit.
 
 The release retains Astro 7.4.12. The audit’s forced fallback to Astro 5.3.0 was not applied because it would reverse the framework upgrade and reintroduce previously addressed advisories. Dependabot remains configured to report upstream updates.
+
+## GitHub Pages deployment preparation
+
+The GitHub Pages workflow installs the lockfile without dependency lifecycle scripts, builds with Node 24, uploads only the static output, and grants Pages deployment permissions only to the deploy job. Official GitHub actions are pinned to verified full commit hashes and covered by weekly Dependabot updates.
+
+Pages builds use the GitHub domain and repository prefix. Navigation, figures, CV links, canonical metadata, and optimized portrait paths were checked under `/academic-website/`. The built HTML now carries its content security policy and referrer policy in metadata so those protections do not rely on Vercel headers. GitHub Pages does not apply `vercel.json`; anti-framing and permissions response-header rules remain specific to Vercel. No equivalent custom HTTP headers are claimed for Pages.
+
+The upstream picomatch build-tool advisory documented above remains unpatched. The hosting change adds no application server handlers or visitor-supplied glob patterns.
+
+The Pages-path release passed static checks for canonical URLs, current navigation, local asset links, the exact CV PDF, and the metadata CSP. All 15 page/viewport browser checks passed without custom response headers, with every image decoded and no page errors or horizontal overflow. A separate root-path build also passed for local and optional Vercel compatibility. GitHub Pages has not been enabled; publication to the new destination is pending explicit user approval.

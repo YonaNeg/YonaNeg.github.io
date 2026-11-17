@@ -1,5 +1,6 @@
 ---
 import type { Publication } from '../data/publications';
+import { withBase } from '../utils/paths';
 interface Props { publication: Publication; }
 const { publication } = Astro.props;
 const { figure, coFirstAuthors = [] } = publication;
@@ -11,8 +12,8 @@ const { figure, coFirstAuthors = [] } = publication;
 >
   {figure && (
     <figure class="publication-figure">
-      <a href={figure.src} target="_blank" rel="noopener noreferrer" aria-label={'View full-size graphical abstract for ' + publication.title}>
-        <img src={figure.src} alt={figure.alt} width={figure.width} height={figure.height} loading="lazy" decoding="async" />
+      <a href={withBase(figure.src)} target="_blank" rel="noopener noreferrer" aria-label={'View full-size graphical abstract for ' + publication.title}>
+        <img src={withBase(figure.src)} alt={figure.alt} width={figure.width} height={figure.height} loading="lazy" decoding="async" />
         <span class="figure-caption">View full-size figure</span>
       </a>
     </figure>

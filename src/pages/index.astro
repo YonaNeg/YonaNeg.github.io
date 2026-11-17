@@ -4,6 +4,7 @@ import { Image } from 'astro:assets';
 import portrait from '../assets/yonatan-degefu.jpeg';
 import PublicationEntry from '../components/PublicationEntry.astro';
 import { publications } from '../data/publications';
+import { withBase } from '../utils/paths';
 const selectedPublications = publications.filter(({ selected }) => selected);
 ---
 <BaseLayout title="Yonatan N. Degefu | Biomedical Engineering & Computational Biology">
@@ -19,7 +20,7 @@ const selectedPublications = publications.filter(({ selected }) => selected);
       <nav class="academic-links" aria-label="Contact and academic profiles">
         <a href="mailto:njr7jk@virginia.edu">Email</a>
         <a href="https://scholar.google.com/citations?user=POp9Bk4AAAAJ&amp;hl=en" target="_blank" rel="noopener noreferrer">Google Scholar</a>
-        <a href="/files/cv.pdf" target="_blank" rel="noopener noreferrer">CV (PDF)</a>
+        <a href={withBase('/files/cv.pdf')} target="_blank" rel="noopener noreferrer">CV (PDF)</a>
         <a href="https://www.linkedin.com/in/yonatan-degefu-b16955a9/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
       </nav>
     </div>
@@ -31,7 +32,7 @@ const selectedPublications = publications.filter(({ selected }) => selected);
   <section class="home-section" aria-labelledby="selected-publications">
     <div class="section-heading">
       <h2 id="selected-publications">Selected publications</h2>
-      <a href="/publications">All publications</a>
+      <a href={withBase('/publications/')}>All publications</a>
     </div>
     <div class="paper-list">
       {selectedPublications.map((publication) => <PublicationEntry publication={publication} />)}
@@ -39,7 +40,7 @@ const selectedPublications = publications.filter(({ selected }) => selected);
   </section>
 
   <section class="home-section" aria-labelledby="research-heading">
-    <div class="section-heading"><h2 id="research-heading">Research interests</h2><a href="/research">Research details</a></div>
+    <div class="section-heading"><h2 id="research-heading">Research interests</h2><a href={withBase('/research/')}>Research details</a></div>
     <dl class="research-list">
       <div><dt>Computational cancer biology</dt><dd>AP-1 transcription factor networks, melanoma plasticity, and mechanistic models of cell state transitions.</dd></div>
       <div><dt>Quantitative systems pharmacology</dt><dd>Models of drug response and combination therapies for cancer and infectious diseases.</dd></div>

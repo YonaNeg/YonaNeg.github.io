@@ -1,8 +1,9 @@
 # Website quick reference
 
-- **Live:** https://ydegefu-research.vercel.app
+- **GitHub Pages:** https://yonaneg.github.io/academic-website/
 - **Repository:** https://github.com/YonaNeg/academic-website
-- **Hosting and deployment history:** https://vercel.com/dashboard
+- **Deployments:** https://github.com/YonaNeg/academic-website/actions
+- **One-time setting:** Repository Settings → Pages → Source → GitHub Actions
 - **Local:** http://127.0.0.1:4321 while the local server is running
 
 Run commands in the `academic-website` folder.
@@ -35,7 +36,7 @@ git commit -m 'Update biography'
 git push
 ```
 
-Confirm the deployment in Vercel. Do not stage `.env` files, local hosting state, `node_modules/`, or generated output.
+Confirm the Deploy to GitHub Pages workflow succeeded. Do not stage `.env` files, local hosting state, `node_modules/`, or generated output.
 
 ## Where to edit
 
@@ -53,6 +54,6 @@ Confirm the deployment in Vercel. Do not stage `.env` files, local hosting state
 
 The CV webpage contains education only. Replace `public/files/cv.pdf` to update the downloadable CV. Add graphical abstracts to `public/images/publications/` and reference their path and descriptive alternative text in the matching publication record. Set `selected: true` to show a publication on the homepage.
 
-For rollback, use Vercel’s deployment controls or revert the specific published commit with `git revert COMMIT_SHA`, then push. Save uncommitted work first.
+For rollback, revert the specific published commit with `git revert COMMIT_SHA`, then push and verify the Pages workflow. Save uncommitted work first.
 
 See [MAINTENANCE_GUIDE.md](MAINTENANCE_GUIDE.md) for details.

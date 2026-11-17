@@ -1,12 +1,13 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { withBase } from '../utils/paths';
 ---
 
 <BaseLayout title="Education - Yonatan N. Degefu" description="Education of Yonatan N. Degefu at the University of Virginia and Colby-Sawyer College.">
   <div class="cv-container">
     <div class="cv-header">
       <h1>Education</h1>
-      <a href="/files/cv.pdf" class="download-btn" download="Yonatan-Degefu-CV-2026.pdf">Download CV (PDF)</a>
+      <a href={withBase('/files/cv.pdf')} class="download-btn" download="Yonatan-Degefu-CV-2026.pdf">Download CV (PDF)</a>
     </div>
     <div class="education-list">
       <article class="cv-item">

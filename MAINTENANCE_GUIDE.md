@@ -1,21 +1,21 @@
 # Academic website maintenance guide
 
-**Live website:** https://ydegefu-research.vercel.app
+**GitHub Pages:** https://yonaneg.github.io/academic-website/
 **Repository:** https://github.com/YonaNeg/academic-website
-**Hosting:** https://vercel.com/dashboard
+**Deployments:** https://github.com/YonaNeg/academic-website/actions
 
 ## Access the website
 
-The live address is public. To manage deployments, sign in to Vercel with the account connected to the repository, select the project associated with `ydegefu-research.vercel.app`, and open Deployments or Settings.
+The GitHub Pages address is public once Pages is enabled and the deployment succeeds. In repository Settings → Pages, choose GitHub Actions as the publishing source. The Deploy to GitHub Pages workflow runs on pushes to `main` and can be started manually from the Actions tab.
 
-The repository contains source files; there is no separate website editor or admin login. Edit the files locally or through GitHub, then deploy through the connected Vercel project.
+The repository contains source files; there is no separate website editor or admin login. Edit the files locally or through GitHub, then deploy through the GitHub Pages workflow.
 
 ## Local development
 
 Open a terminal in your checkout of `academic-website`. On this computer the checkout is:
 
 ```bash
-cd '/Users/njr7jk/Library/CloudStorage/Box-Box/academic-website'
+cd /path/to/academic-website
 ```
 
 Use Node 24 LTS with current security updates. With nvm installed:
@@ -54,8 +54,10 @@ public/
   favicon.svg                Academic profile favicon
   images/publications/       Original publication figures
   files/cv.pdf               Updated downloadable CV
-astro.config.mjs              Site URL and static build configuration
-vercel.json                   Deployment configuration and security headers
+astro.config.mjs              Site URL, hosting path, and static build configuration
+.github/workflows/deploy.yml   GitHub Pages build and deployment
+src/utils/paths.ts             Base-aware internal links and public asset paths
+vercel.json                   Optional Vercel hosting configuration
 ```
 
 Content and styles are separated so that the shared theme stays consistent across pages.
@@ -106,9 +108,11 @@ git commit -m 'Update biography and CV'
 git push
 ```
 
-The documented Vercel integration deploys changes pushed to its configured production branch. Verify that integration, branch, Node version, and the deployment result in the Vercel dashboard. Use Node 24.x there; the upgraded framework requires at least Node 22.23.4.
+The GitHub Pages workflow builds pushes to `main` with Node 24, installs exact dependencies without lifecycle scripts, and uploads only `dist/`. Its official actions are pinned to full commit hashes. Enable the repository’s Pages source as GitHub Actions once.
 
-The deployment must complete before the live website changes. Check logs in Vercel if a build fails.
+`GITHUB_PAGES=true` selects the Pages URL and the repository path automatically. The path helper keeps navigation, figures, and the CV under `/academic-website/`. If the repository is named `YonaNeg.github.io`, the Pages build uses the root domain instead. Normal local and optional Vercel builds retain root paths.
+
+The deployment must complete before the live website changes. Check the workflow logs in the GitHub Actions tab if a build fails.
 
 ## Security maintenance
 
@@ -119,10 +123,11 @@ The website generates static HTML and CSS. It has no application database, sign-
 - Dependabot is configured to open weekly npm update pull requests after its configuration is pushed to GitHub.
 - Install from the lockfile with `npm ci --ignore-scripts`. The current static build does not require dependency lifecycle scripts.
 - Keep credentials out of source files and public assets.
-- `vercel.json` applies the production browser security headers. The content security policy blocks scripts, embedded frames, and network connections from the page. Styles and images load from the site’s own origin.
+- Production HTML includes a content security policy and referrer policy in metadata. Scripts, child frames, forms, and page network connections are blocked; styles and images load from the same origin.
+- GitHub Pages does not apply `vercel.json`. Its HTTP response headers are controlled by GitHub; the Vercel-specific anti-framing and permissions headers are not configured by this Pages workflow.
 - If adding interactive JavaScript, forms, analytics, external images, or fonts, review and test the policy as part of that change.
 
-GitHub and Vercel account access, authentication, collaborator permissions, branch protection, and deployment logs require a separate review in those accounts.
+GitHub account access, authentication, collaborator permissions, branch protection, and deployment logs require a separate review in those accounts.
 
 ## Recover from a problem
 
@@ -134,17 +139,17 @@ git diff
 git log --oneline -5
 ```
 
-Save uncommitted work before any rollback. For a published regression, redeploy a known working deployment in Vercel, or use `git revert COMMIT_SHA` to create a new commit that reverses the specific change, then push.
+Save uncommitted work before any rollback. For a published regression, use `git revert COMMIT_SHA` to create a new commit that reverses the specific change, then push.
 
 Avoid rewriting shared history or discarding local work as a routine recovery step.
 
 ## Troubleshooting
 
-**The live site has not changed:** Check that the commit reached the production branch and that Vercel finished deploying it. Local edits and builds alone are not published.
+**The live site has not changed:** Check that the commit reached `main`, the Pages source is GitHub Actions, and the deployment workflow succeeded. Local edits and builds alone are not published.
 
-**The build reports an unsupported Node version:** Select Node 24.x in Vercel and use the `.nvmrc` locally.
+**The build reports an unsupported Node version:** The workflow uses Node 24; use the `.nvmrc` locally if you manage versions with nvm.
 
-**Styles or new features are blocked in production:** Inspect the browser console and the CSP in `vercel.json`. Check the build output before adjusting the policy.
+**Styles or new features are blocked in production:** Inspect the browser console and the production CSP in `src/layouts/BaseLayout.astro`. Check the build output before adjusting the policy.
 
 **A publication figure is missing:** Check that its path in `src/data/publications.ts` matches a file under `public/images/publications/`. The path starts with `/images/publications/` in the website.
 
