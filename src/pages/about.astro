@@ -2,90 +2,43 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="About - Yonatan N. Degefu" description="About Yonatan N. Degefu: biomedical engineering research, education, and experience in computational biology and systems pharmacology.">
+<BaseLayout title="About - Yonatan N. Degefu" description="What motivates Yonatan N. Degefu, how he approaches research problems, and his interests beyond the lab.">
   <div class="about-container">
-    <p class="eyebrow page-kicker">Background & experience</p>
+    <p class="eyebrow page-kicker">What motivates me</p>
     <h1>About Me</h1>
 
     <section class="bio-section">
       <div class="bio-content">
         <p>
-          I am a PhD candidate in Biomedical Engineering at the University of Virginia, working in the
-          Fallahi-Sichani Lab. My research focuses on understanding cellular plasticity in melanoma through
-          computational and systems biology approaches.
+          I am interested in how living systems make decisions, and in using that understanding to
+          improve treatment. In my work on melanoma, that means asking how cells interpret outside
+          signals and take on different states. My earlier work on tuberculosis began with a different
+          challenge: finding better drug combinations in the face of resistance.
         </p>
         <p>
-          I'm passionate about bridging the gap between healthcare and translational research through quantitative
-          methods. My work combines mechanistic modeling, single-cell analysis, and drug combination discovery to
-          develop more effective cancer therapies.
-        </p>
-        <p>
-          Beyond research, I'm bilingual (English and Amharic), I enjoy the outdoors and love to cook, and am committed
-          to community service and scientific outreach. I believe in making science accessible and impactful for
-          broader communities.
+          My background spans biology, mathematics, and chemistry. I bring those perspectives together
+          through experimental data, computational analysis, and mathematical models.
         </p>
       </div>
     </section>
 
-    <section class="education">
-      <h2>Education</h2>
-      <div class="timeline">
-        <div class="timeline-item">
-          <div class="timeline-marker"></div>
-          <div class="timeline-content">
-            <h3>Ph.D. in Biomedical Engineering</h3>
-            <p class="institution">University of Virginia, Charlottesville, VA</p>
-            <p class="date">August 2021 - Present</p>
-            <p class="description">Research: Mechanistic modeling of AP-1 transcriptional dynamics and cellular plasticity in melanoma</p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-marker"></div>
-          <div class="timeline-content">
-            <h3>B.S. in Biology</h3>
-            <p class="institution">Colby-Sawyer College, New London, NH</p>
-            <p class="date">September 2014 - May 2018</p>
-            <p class="description">Minors: Mathematics & Chemistry | Summa Cum Laude</p>
-          </div>
-        </div>
-      </div>
+    <section class="bio-section" aria-labelledby="approach-heading">
+      <h2 id="approach-heading">How I approach problems</h2>
+      <p>
+        The question determines which tools I use. To understand cell behavior, I translate proposed
+        mechanisms into models, compare their predictions with data, and work with experimental
+        collaborators to investigate where the two disagree. To explore drug combinations, I combine
+        efficient measurements with automated analysis and machine learning. Across these projects,
+        I aim to turn complex observations into explanations and predictions we can test.
+      </p>
     </section>
 
-    <section class="experience">
-      <h2>Experience</h2>
-      <div class="experience-list">
-        <div class="experience-item">
-          <h3>Graduate Research Assistant</h3>
-          <p class="organization">Fallahi-Sichani Lab, University of Virginia</p>
-          <p class="date">November 2021 - Present</p>
-          <ul>
-            <li>Developed ODE-based mechanistic modeling framework to characterize AP-1 transcription factor dynamics</li>
-            <li>Built computational pipelines for calibrating models from single-cell multiplexed imaging data</li>
-            <li>Integrated Boolean modeling and partial correlation networks to construct de novo regulatory networks</li>
-            <li>Mentored summer undergraduate researchers in quantitative biology and data science</li>
-          </ul>
-        </div>
-        <div class="experience-item">
-          <h3>Systems Medicine Intern</h3>
-          <p class="organization">AstraZeneca, Gaithersburg, MD</p>
-          <p class="date">May 2025 - August 2025</p>
-          <ul>
-            <li>Designed novel QSP model in MATLAB SimBiology for DNA Damage Response pathways</li>
-            <li>Conducted in silico experiments to quantify drug synergy and inform optimal dosing strategies</li>
-            <li>Presented findings to stakeholders in Systems Medicine and Clinical Pharmacology</li>
-          </ul>
-        </div>
-        <div class="experience-item">
-          <h3>Research Technician</h3>
-          <p class="organization">Aldridge Lab, Tufts University</p>
-          <p class="date">June 2018 - May 2021</p>
-          <ul>
-            <li>Investigated multi-drug combinations against M. tuberculosis using DiaMOND method</li>
-            <li>Engineered automated analysis pipeline processing 300,000+ drug combination screens</li>
-            <li>Developed predictive models using machine learning to translate in vitro to in vivo outcomes</li>
-          </ul>
-        </div>
-      </div>
+    <section class="bio-section" aria-labelledby="beyond-heading">
+      <h2 id="beyond-heading">Beyond research</h2>
+      <p>
+        I enjoy spending time outdoors and cooking, and I speak English and Amharic. I also care about
+        mentoring, community service, and making science accessible beyond the lab.
+      </p>
     </section>
   </div>
 </BaseLayout>

@@ -14,8 +14,8 @@ const selectedPublications = publications.filter(({ selected }) => selected);
       <p class="academic-role">PhD Candidate in Biomedical Engineering</p>
       <p class="academic-affiliation">University of Virginia · Fallahi-Sichani Lab</p>
       <div class="intro-bio">
-        <p>I study how transcription factor networks regulate cellular plasticity in melanoma. My research combines mechanistic modeling, single-cell imaging, and network inference to understand cell state transitions and drug response.</p>
-        <p>More broadly, I am interested in using quantitative approaches to connect molecular mechanisms with therapeutic outcomes, including the design of drug combinations for cancer and infectious diseases.</p>
+        <p>I study how cells change and how those changes affect their response to treatment. My work brings together experimental data and mathematical models, with a focus on melanoma and drug combinations for cancer and infectious diseases.</p>
+        <p><a href={withBase('/about/')}>More about me</a> · <a href={withBase('/research/')}>Explore the questions behind my research</a></p>
       </div>
       <nav class="academic-links" aria-label="Contact and academic profiles">
         <a href="mailto:njr7jk@virginia.edu">Email</a>
@@ -39,21 +39,4 @@ const selectedPublications = publications.filter(({ selected }) => selected);
     </div>
   </section>
 
-  <section class="home-section" aria-labelledby="research-heading">
-    <div class="section-heading"><h2 id="research-heading">Research interests</h2><a href={withBase('/research/')}>Research details</a></div>
-    <dl class="research-list">
-      <div><dt>Computational cancer biology</dt><dd>AP-1 transcription factor networks, melanoma plasticity, and mechanistic models of cell state transitions.</dd></div>
-      <div><dt>Quantitative systems pharmacology</dt><dd>Models of drug response and combination therapies for cancer and infectious diseases.</dd></div>
-      <div><dt>Single-cell analysis & network inference</dt><dd>Multiplexed imaging, Boolean modeling, and regulatory network analysis.</dd></div>
-    </dl>
-  </section>
-
-  <section class="home-section" aria-labelledby="experience-heading">
-    <div class="section-heading"><h2 id="experience-heading">Selected experience & awards</h2></div>
-    <ul class="milestones">
-      <li><span class="date">2025</span><span>Walter H. Coulter Translational Research Fellowship, University of Virginia</span></li>
-      <li><span class="date">2025</span><span>Systems Medicine Internship, AstraZeneca</span></li>
-      <li><span class="date">2023</span><span>T32 Systems & Biomolecular Data Science Fellowship, University of Virginia</span></li>
-    </ul>
-  </section>
 </BaseLayout>

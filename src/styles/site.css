@@ -93,6 +93,9 @@ main { padding-block: 3rem 4.5rem; min-height: 70vh; }
 .keyword { color: var(--muted); font-size: .8rem; }
 .keyword + .keyword::before { content: '·'; margin-right: .8rem; }
 .project-status { color: var(--muted); font-size: .8rem; margin-bottom: .8rem; }
+.project-context { color: var(--muted); font-size: .85rem; margin-bottom: .5rem; }
+.project-card > p + p { margin-top: .85rem; }
+.project-card > .project-insight { color: var(--ink); }
 .project-links, .pub-links { display: flex; flex-wrap: wrap; gap: 1.1rem; margin-top: .9rem; }
 .link, .pub-link { font-size: .85rem; }
 .publication h3 { font-size: 1.1rem; line-height: 1.5; text-wrap: pretty; }

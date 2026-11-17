@@ -2,123 +2,122 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="Research - Yonatan N. Degefu" description="Mechanistic modeling of melanoma plasticity, quantitative systems pharmacology, and drug combination discovery by Yonatan N. Degefu.">
+<BaseLayout title="Research - Yonatan N. Degefu" description="The questions motivating Yonatan N. Degefu's research on non-genetic cell heterogeneity, treatment response, and drug combinations, and how he approaches them.">
   <div class="research-container">
-    <p class="eyebrow page-kicker">Models, mechanisms & medicine</p>
+    <p class="eyebrow page-kicker">Questions behind the work</p>
     <h1>Research</h1>
 
     <section class="research-overview">
       <p class="intro">
-        My research combines computational modeling, systems biology, and quantitative pharmacology to understand
-        and combat cancer and infectious diseases. I develop mechanistic models that bridge molecular mechanisms
-        with therapeutic outcomes, enabling more rational drug combination design and revealing fundamental
-        principles of cellular plasticity.
+        Each project begins with its own biological question. Here are the problems that motivated
+        my work, the challenges they posed, and the approaches I used to investigate them.
       </p>
     </section>
 
-    <section class="research-areas">
-      <h2>Research Areas</h2>
+    <section class="projects" aria-labelledby="research-questions">
+      <h2 id="research-questions">Questions I investigate</h2>
 
-      <div class="area">
-        <h3>Melanoma Cellular Plasticity</h3>
+      <article class="project-card" aria-labelledby="melanoma-question">
+        <p class="project-context">Melanoma cell plasticity · Fallahi-Sichani Lab</p>
+        <h3 id="melanoma-question">Why do cancer cells respond differently to the same treatment?</h3>
         <p>
-          Developing ODE-based mechanistic models to understand how AP-1 transcription factor networks regulate
-          cell state transitions in melanoma. Using single-cell multiplexed imaging data, I build computational
-          frameworks that reveal competitive and configurable interactions driving tumor heterogeneity and drug
-          resistance.
+          Cells can occupy different states without a change in their DNA, and those states can
+          influence how they respond to treatment. I want to understand the principles behind this
+          non-genetic heterogeneity: how cells integrate outside signals and make decisions.
         </p>
-        <div class="keywords">
-          <span class="keyword">Mechanistic Modeling</span>
-          <span class="keyword">Transcription Factors</span>
-          <span class="keyword">Cell Plasticity</span>
-          <span class="keyword">Single-Cell Analysis</span>
+        <p>
+          I study AP-1, a group of proteins that helps control gene activity, by building mathematical
+          models of how its components interact. I compare the models with measurements of individual
+          melanoma cells and work with experimental collaborators to test predictions about how
+          changes in the network shift cell states.
+        </p>
+        <p class="project-insight">
+          Our work showed how interactions within the AP-1 network help explain the variety of
+          melanoma cell states and how those states change in response to treatment.
+        </p>
+        <div class="keywords" aria-label="Skills used in the melanoma project">
+          <span class="keyword">Mechanistic modeling</span>
+          <span class="keyword">Single-cell data analysis</span>
+          <span class="keyword">Model calibration</span>
+          <span class="keyword">Network analysis</span>
         </div>
-      </div>
+        <div class="project-links">
+          <a href="https://doi.org/10.1016/j.celrep.2026.117965" class="link">Cell Reports (2026)</a>
+        </div>
+      </article>
 
-      <div class="area">
-        <h3>Quantitative Systems Pharmacology</h3>
+      <article class="project-card" aria-labelledby="dna-damage-question">
+        <p class="project-context">DNA damage response · AstraZeneca</p>
+        <h3 id="dna-damage-question">How can we choose which cancer drugs to combine?</h3>
         <p>
-          Designing QSP models to mechanistically describe drug interactions and predict optimal combination
-          therapies. My work at AstraZeneca focused on DNA damage response pathways, while previous work
-          addressed tuberculosis drug combinations using high-throughput screening and machine learning.
+          Knowing how a drug works on its own is only part of the problem. To understand a combination,
+          we also need to understand how the pathways it targets interact.
         </p>
-        <div class="keywords">
-          <span class="keyword">QSP Modeling</span>
-          <span class="keyword">Drug Synergy</span>
+        <p>
+          During my AstraZeneca internship, I developed a model of DNA damage response pathways in
+          MATLAB SimBiology. I used simulated experiments to explore drug interactions and dosing
+          strategies, connecting proposed biological mechanisms with predicted treatment responses.
+        </p>
+        <div class="keywords" aria-label="Skills used in the DNA damage response project">
+          <span class="keyword">Quantitative systems pharmacology</span>
           <span class="keyword">MATLAB SimBiology</span>
-          <span class="keyword">In Silico Experiments</span>
+          <span class="keyword">Simulation</span>
+          <span class="keyword">Drug interaction analysis</span>
         </div>
-      </div>
+      </article>
 
-      <div class="area">
-        <h3>Drug Combination Discovery</h3>
+      <article class="project-card" aria-labelledby="tb-question">
+        <p class="project-context">Tuberculosis drug combinations · Aldridge Lab</p>
+        <h3 id="tb-question">How can we find better drug combinations without testing them all?</h3>
         <p>
-          Developing computational pipelines to systematically measure and predict drug interactions at scale.
-          Applied methods like DiaMOND (Diagonal Measurement Of N-way Drug interactions) to identify synergistic
-          combinations against M. tuberculosis and M. abscessus, processing hundreds of thousands of drug screens.
+          This work was motivated by the need to improve long-standing tuberculosis treatments as
+          bacteria developed resistance. The number of possible drug combinations made testing every
+          option impractical. We needed creative ways to measure combinations efficiently and make
+          sense of many different drug responses at once.
         </p>
-        <div class="keywords">
-          <span class="keyword">High-Throughput Screening</span>
-          <span class="keyword">Machine Learning</span>
-          <span class="keyword">Network Analysis</span>
-          <span class="keyword">Predictive Modeling</span>
+        <p>
+          We combined efficient drug-interaction measurements with machine learning to interpret
+          high-dimensional data. I worked on automated analysis pipelines and models that linked
+          laboratory measurements to treatment outcomes in mouse studies. We also asked whether
+          measurements of drug pairs could guide the design of larger combinations.
+        </p>
+        <p class="project-insight">
+          These studies identified interpretable rules for assembling combinations and helped
+          prioritize treatments for further testing in tuberculosis models.
+        </p>
+        <div class="keywords" aria-label="Skills used in the tuberculosis projects">
+          <span class="keyword">Efficient experimental design</span>
+          <span class="keyword">Automated data analysis</span>
+          <span class="keyword">Machine learning</span>
+          <span class="keyword">Interpretable prediction</span>
         </div>
-      </div>
-    </section>
-
-    <section class="projects">
-      <h2>Current & Recent Projects</h2>
-
-      <div class="project-card">
-        <h3>AP-1 Network Dynamics in Melanoma</h3>
-        <p class="project-status">Ongoing | 2021 - Present</p>
-        <p>
-          Mechanistic modeling of AP-1 transcription factor dynamics to understand cellular plasticity
-          in melanoma. Integrating Boolean modeling, partial correlation networks, and ODE frameworks
-          with multiplexed single-cell imaging data.
-        </p>
         <div class="project-links">
-          <a href="https://doi.org/10.1016/j.celrep.2026.117965" class="link">Cell Reports paper (2026)</a>
-          <a href="https://doi.org/10.1101/2025.11.06.686987" class="link">Earlier preprint</a>
+          <a href="https://doi.org/10.1016/j.xcrm.2022.100737" class="link">Cell Reports Medicine (2022)</a>
+          <a href="https://doi.org/10.1016/j.cels.2021.08.004" class="link">Cell Systems (2021)</a>
         </div>
-      </div>
+      </article>
 
-      <div class="project-card">
-        <h3>QSP Models for DNA Damage Response</h3>
-        <p class="project-status">Completed | Summer 2025</p>
+      <article class="project-card" aria-labelledby="abscessus-question">
+        <p class="project-context"><i>Mycobacterium abscessus</i> drug interactions · Aldridge Lab</p>
+        <h3 id="abscessus-question">Why does the same drug combination work differently across bacterial strains?</h3>
         <p>
-          Developed novel Quantitative Systems Pharmacology models in MATLAB SimBiology to predict
-          synergistic drug combinations targeting DNA damage response pathways. Conducted in silico
-          experiments to inform optimal dosing strategies for drug-sensitive and resistant phenotypes.
+          Samples of the same bacterial species can respond differently to antibiotics. We asked which
+          drug interactions are shared across samples and which depend on the particular isolate being tested.
         </p>
-      </div>
-
-      <div class="project-card">
-        <h3>TB Drug Combination Landscapes</h3>
-        <p class="project-status">Completed | 2018 - 2021</p>
         <p>
-          Systematic measurement of drug combination landscapes using DiaMOND to predict in vivo tuberculosis
-          treatment outcomes. Developed automated pipelines processing 300,000+ screens and machine learning
-          models to prioritize combinations for animal testing.
+          In collaborative work on <i>Mycobacterium abscessus</i>, I helped map drug interactions and
+          compare responses across isolates. This work identified promising combinations while showing
+          why variation between bacterial samples matters when evaluating a treatment.
         </p>
+        <div class="keywords" aria-label="Skills used in the Mycobacterium abscessus project">
+          <span class="keyword">Drug interaction analysis</span>
+          <span class="keyword">Comparative data analysis</span>
+          <span class="keyword">Dose-response analysis</span>
+        </div>
         <div class="project-links">
-          <a href="https://doi.org/10.1016/j.xcrm.2022.100737" class="link">Publication</a>
-          <a href="https://doi.org/10.1016/j.cels.2021.08.004" class="link">Cell Systems Paper</a>
+          <a href="https://doi.org/10.1128/aac.00090-23" class="link">Antimicrobial Agents and Chemotherapy (2023)</a>
         </div>
-      </div>
-
-      <div class="project-card">
-        <h3>M. abscessus Drug Interactions</h3>
-        <p class="project-status">Completed | 2020 - 2023</p>
-        <p>
-          Mapped the drug interaction landscape of Mycobacterium abscessus, identifying novel synergies
-          and isolate-specific responses. Demonstrated how systematic drug interaction measurements can
-          reveal pathogen-specific vulnerabilities.
-        </p>
-        <div class="project-links">
-          <a href="https://doi.org/10.1128/aac.00090-23" class="link">Publication</a>
-        </div>
-      </div>
+      </article>
     </section>
   </div>
 </BaseLayout>
