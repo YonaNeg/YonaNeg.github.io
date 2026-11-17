@@ -1,402 +1,155 @@
-# Academic Website Maintenance Guide
+# Academic website maintenance guide
 
-**Your Live Site:** https://ydegefu-research.vercel.app
-**GitHub Repo:** https://github.com/YonaNeg/academic-website
+**Live website:** https://ydegefu-research.vercel.app
+**Repository:** https://github.com/YonaNeg/academic-website
+**Hosting:** https://vercel.com/dashboard
 
----
+## Access the website
 
-## Table of Contents
-1. [Project Structure](#project-structure)
-2. [How to Make Updates](#how-to-make-updates)
-3. [Common Edits](#common-edits)
-4. [Publishing Changes](#publishing-changes)
-5. [Tech Stack Overview](#tech-stack-overview)
-6. [Troubleshooting](#troubleshooting)
-7. [Vercel Info](#vercel-info)
+The live address is public. To manage deployments, sign in to Vercel with the account connected to the repository, select the project associated with `ydegefu-research.vercel.app`, and open Deployments or Settings.
 
----
+The repository contains source files; there is no separate website editor or admin login. Edit the files locally or through GitHub, then deploy through the connected Vercel project.
 
-## Project Structure
+## Local development
 
-```
-academic-website/
-├── src/
-│   ├── layouts/
-│   │   └── BaseLayout.astro          # Main layout (header, footer, nav)
-│   └── pages/
-│       ├── index.astro                # Home page
-│       ├── about.astro                # About page
-│       ├── research.astro             # Research page
-│       ├── publications.astro         # Publications page
-│       └── cv.astro                   # CV page
-├── public/                            # Static files (images, PDFs, etc.)
-├── package.json                       # Dependencies
-└── astro.config.mjs                  # Astro configuration
-```
+Open a terminal in your checkout of `academic-website`. On this computer the checkout is:
 
-### Key Files Explained
-
-**`src/layouts/BaseLayout.astro`**
-- Contains the navigation bar, header, and footer
-- Defines the global dark terminal theme
-- If you change your name here, it updates everywhere
-
-**`src/pages/*.astro`**
-- Each `.astro` file = one page on your website
-- Contains both content (HTML-like) and styling (CSS)
-- Top section (between `---`) is JavaScript/data
-- Bottom section is the page content
-
----
-
-## How to Make Updates
-
-### Step 1: Open Your Project
 ```bash
-cd /Users/yonatandegefu/Library/CloudStorage/Box-Box/academic-website
+cd '/Users/njr7jk/Library/CloudStorage/Box-Box/academic-website'
 ```
 
-### Step 2: Edit Files
-Use any text editor:
-- **VS Code** (recommended): `code .`
-- **Any text editor**: Open the `.astro` files directly
+Use Node 24 LTS with current security updates. With nvm installed:
 
-### Step 3: Test Locally (Optional but Recommended)
 ```bash
+nvm use
+npm ci --ignore-scripts
 npm run dev
 ```
-Then open http://localhost:4321 in your browser to preview changes.
 
-Press `Ctrl+C` to stop the server when done.
+Visit http://127.0.0.1:4321, or the URL printed by Astro. The server binds to this computer. Stop it with Ctrl+C.
 
-### Step 4: Publish Changes (See [Publishing Changes](#publishing-changes))
-
----
-
-## Common Edits
-
-### 📝 Update Your Bio or Text
-
-**File:** `src/pages/index.astro` (or any page)
-
-Find the text you want to change and edit it:
-```html
-<p class="bio">
-  Your current text here  <!-- Change this -->
-</p>
-```
-
-### 📄 Add a New Publication
-
-**File:** `src/pages/publications.astro`
-
-Copy an existing publication block and modify:
-```html
-<div class="publication">
-  <h3>Your Paper Title</h3>
-  <p class="authors"><strong>Degefu YN</strong>, Co-authors</p>
-  <p class="venue"><em>Journal Name</em>, Year</p>
-  <p class="description">Brief description</p>
-  <div class="pub-links">
-    <a href="https://doi.org/..." class="pub-link" target="_blank">Paper</a>
-  </div>
-</div>
-```
-
-### 🎨 Change Colors
-
-**File:** `src/layouts/BaseLayout.astro`
-
-Find the color values and change them:
-```css
-/* Current terminal green theme */
-#00ff41  /* Main green */
-#1a1a1a  /* Dark background */
-#0d0d0d  /* Darker sections */
-
-/* Example: Change to blue theme */
-#00ff41 → #00a8ff  /* Change all instances */
-```
-
-### 📧 Update Contact Info
-
-**File:** `src/pages/index.astro`
-
-Find the links section:
-```html
-<a href="mailto:njr7jk@virginia.edu" class="btn">Email</a>
-<a href="https://scholar.google.com/..." class="btn btn-secondary">Google Scholar</a>
-```
-
-### 🏆 Add New Award
-
-**File:** `src/pages/cv.astro`
-
-Find the Awards section and add:
-```html
-<div class="cv-item">
-  <div class="cv-main">
-    <h3>Award Name</h3>
-    <p class="institution">Organization</p>
-  </div>
-  <div class="cv-date">2025</div>
-</div>
-```
-
-### 🖼️ Add Your Photo
-
-1. Save your photo as `profile.jpg` in the `public/` folder
-2. **File:** `src/pages/about.astro`
-3. Replace the placeholder:
-```html
-<!-- Old: -->
-<div class="placeholder-image">YND</div>
-
-<!-- New: -->
-<img src="/profile.jpg" alt="Yonatan Degefu" style="width: 200px; height: 200px; border-radius: 4px; border: 2px solid #00ff41;">
-```
-
-### 📎 Add PDF CV Download
-
-1. Save your CV PDF as `cv.pdf` in the `public/` folder
-2. The download button in `src/pages/cv.astro` will automatically work:
-```html
-<a href="/cv.pdf" class="download-btn" download>Download PDF</a>
-```
-
----
-
-## Publishing Changes
-
-Every time you make changes, follow these steps to publish them:
+To preview the production build:
 
 ```bash
-# 1. Navigate to your project
-cd /Users/yonatandegefu/Library/CloudStorage/Box-Box/academic-website
+npm run build
+npm run preview
+```
 
-# 2. Save your changes to git
-git add .
+## Project structure
 
-# 3. Describe what you changed
-git commit -m "Updated publications with new paper"
+```text
+src/
+  layouts/BaseLayout.astro    Navigation, metadata, footer
+  pages/
+    index.astro              Homepage and featured work
+    about.astro              Biography, education, experience
+    research.astro           Research areas and projects
+    publications.astro       Papers, preprints, methods
+    cv.astro                 Education only
+  components/PublicationEntry.astro  Shared publication layout
+  data/publications.ts       Publication records and homepage selections
+  assets/yonatan-degefu.jpeg  Homepage portrait, optimized at build time
+  styles/site.css            Shared design, mobile and print styles
+public/
+  favicon.svg                Academic profile favicon
+  images/publications/       Original publication figures
+  files/cv.pdf               Updated downloadable CV
+astro.config.mjs              Site URL and static build configuration
+vercel.json                   Deployment configuration and security headers
+```
 
-# 4. Push to GitHub (this automatically deploys!)
+Content and styles are separated so that the shared theme stays consistent across pages.
+
+## Make content changes
+
+Edit text in the relevant `.astro` page. The section between the initial `---` markers contains imports and build-time code. The remaining markup contains page content.
+
+Keep academic facts consistent across the homepage, About page, and education section. Edit publication status, author lists, years, summaries, and DOI links in `src/data/publications.ts`. Both the homepage and full publication list use these records. Set `selected: true` to feature an entry on the homepage.
+
+The publication counts are calculated from these records. When a preprint is published, update its existing record to the journal version and preserve the preprint as an additional link.
+
+External links that open new tabs should include `rel="noopener noreferrer"`.
+
+### Update education
+
+The CV webpage at `/cv` contains education only. Edit the degree, institution, dates, and existing education details in `src/pages/cv.astro`. Replace `public/files/cv.pdf` to update the downloadable CV; the homepage and education page link to this file.
+
+### Add a publication figure
+
+Store the original figure in `public/images/publications/`, using a descriptive filename. Add its `src`, `alt`, `width`, and `height` to the corresponding record in `src/data/publications.ts`. The shared component displays the figure without cropping and links to the original full-size file. Keep alternative text descriptive of the scientific content.
+
+Everything in `public/` is published. Store only intended public assets there.
+
+### Add a photo
+
+Replace `src/assets/yonatan-degefu.jpeg` to update the homepage portrait. Astro generates an optimized image at build time. The desktop layout places the portrait beside the introduction; the phone layout places it above the text. Adjust its display dimensions and framing in `src/styles/site.css`.
+
+### Change the design
+
+Edit `src/styles/site.css`. The variables at the top control the light academic palette. The file also contains responsive layouts, keyboard focus indicators, and print styles.
+
+## Check and publish
+
+```bash
+git status
+git diff
+npm audit
+npm run build
+```
+
+Review the changed files and preview the result. Stage specific files, for example:
+
+```bash
+git add src/pages/about.astro src/pages/cv.astro
+git diff --cached
+git commit -m 'Update biography and CV'
 git push
 ```
 
-**Wait 30-60 seconds** and your site will automatically update at https://ydegefu-research.vercel.app!
+The documented Vercel integration deploys changes pushed to its configured production branch. Verify that integration, branch, Node version, and the deployment result in the Vercel dashboard. Use Node 24.x there; the upgraded framework requires at least Node 22.23.4.
 
-### Common Commit Message Examples
+The deployment must complete before the live website changes. Check logs in Vercel if a build fails.
+
+## Security maintenance
+
+The website generates static HTML and CSS. It has no application database, sign-in, forms, or server adapter.
+
+- Keep `.gitignore` in place. It excludes dependency folders, generated output, environment files, and local Vercel state.
+- Run `npm audit` when updating dependencies and before releases.
+- Dependabot is configured to open weekly npm update pull requests after its configuration is pushed to GitHub.
+- Install from the lockfile with `npm ci --ignore-scripts`. The current static build does not require dependency lifecycle scripts.
+- Keep credentials out of source files and public assets.
+- `vercel.json` applies the production browser security headers. The content security policy blocks scripts, embedded frames, and network connections from the page. Styles and images load from the site’s own origin.
+- If adding interactive JavaScript, forms, analytics, external images, or fonts, review and test the policy as part of that change.
+
+GitHub and Vercel account access, authentication, collaborator permissions, branch protection, and deployment logs require a separate review in those accounts.
+
+## Recover from a problem
+
+Inspect first:
+
 ```bash
-git commit -m "Added new publication"
-git commit -m "Updated bio on about page"
-git commit -m "Added profile photo"
-git commit -m "Updated CV with new award"
-git commit -m "Fixed typo on research page"
+git status
+git diff
+git log --oneline -5
 ```
 
----
+Save uncommitted work before any rollback. For a published regression, redeploy a known working deployment in Vercel, or use `git revert COMMIT_SHA` to create a new commit that reverses the specific change, then push.
 
-## Tech Stack Overview
-
-### What is Astro?
-- A modern web framework for building fast websites
-- Files end in `.astro` (similar to HTML but more powerful)
-- Combines HTML, CSS, and JavaScript in one file
-
-### Structure of an .astro File
-```astro
----
-// Top section: JavaScript/imports (between ----)
-import BaseLayout from '../layouts/BaseLayout.astro';
-const myData = "some data";
----
-
-<!-- Middle section: HTML content -->
-<BaseLayout title="Page Title">
-  <h1>My Content</h1>
-  <p>Text here</p>
-</BaseLayout>
-
-<style>
-  /* Bottom section: CSS styling */
-  h1 {
-    color: #00ff41;
-  }
-</style>
-```
-
-### The Terminal Theme
-Your site uses:
-- **Monospace fonts**: JetBrains Mono, Fira Code, Consolas
-- **Color scheme**:
-  - Background: `#1a1a1a` (dark gray)
-  - Text: `#e0e0e0` (light gray)
-  - Accent: `#00ff41` (matrix green)
-  - Borders: Green glow effects
-- **Terminal elements**: `>`, `$`, `#`, `##`, `[`, `]` prefixes
-
----
+Avoid rewriting shared history or discarding local work as a routine recovery step.
 
 ## Troubleshooting
 
-### "Changes aren't showing up on the live site"
-1. Did you `git push`? Run: `git status` to check
-2. Check Vercel dashboard: https://vercel.com/dashboard
-3. Wait 60 seconds - deployments take time
-4. Hard refresh your browser: `Cmd+Shift+R` (Mac) or `Ctrl+Shift+R` (Windows)
+**The live site has not changed:** Check that the commit reached the production branch and that Vercel finished deploying it. Local edits and builds alone are not published.
 
-### "Git says there are conflicts"
-```bash
-# Get latest changes from GitHub
-git pull
+**The build reports an unsupported Node version:** Select Node 24.x in Vercel and use the `.nvmrc` locally.
 
-# If there are conflicts, you'll need to resolve them
-# Then:
-git add .
-git commit -m "Resolved conflicts"
-git push
-```
+**Styles or new features are blocked in production:** Inspect the browser console and the CSP in `vercel.json`. Check the build output before adjusting the policy.
 
-### "I broke something!"
-```bash
-# See what changed
-git status
+**A publication figure is missing:** Check that its path in `src/data/publications.ts` matches a file under `public/images/publications/`. The path starts with `/images/publications/` in the website.
 
-# Undo uncommitted changes
-git checkout -- filename.astro
+**The build stalls before compiling:** Reinstall local dependencies with `npm ci --ignore-scripts`. This resolved the dependency-folder startup issue found during the November 2026 review; the same runtime successfully built both a clean temporary checkout and the repaired original.
 
-# Restore to last working version
-git reset --hard HEAD
+**Dependencies seem inconsistent:** Run `npm ci --ignore-scripts` to install the exact versions in `package-lock.json`.
 
-# Then push to restore live site
-git push --force
-```
-
-### "Local preview not working"
-```bash
-# Reinstall dependencies
-npm install
-
-# Try again
-npm run dev
-```
-
----
-
-## Vercel Info
-
-### Is Vercel Really Free?
-**YES!** 100% free for projects like yours.
-
-**Free Tier Includes:**
-- Unlimited deployments
-- Automatic HTTPS/SSL
-- Global CDN (fast worldwide)
-- 100GB bandwidth/month (way more than you'll use)
-- Custom domains (if you buy one)
-- No credit card required
-
-**Your site will use ~1-5GB/month** (academic sites get very little traffic compared to the 100GB limit).
-
-### Vercel Dashboard
-- **URL:** https://vercel.com/dashboard
-- See deployment status
-- View analytics (visitors, page views)
-- Manage domains
-- Check build logs
-
-### Deployment Process
-1. You push to GitHub: `git push`
-2. Vercel detects the change
-3. Vercel builds your site (~20 seconds)
-4. Vercel deploys to global CDN (~10 seconds)
-5. Your site updates automatically!
-
-### Build Status
-Check if deployment succeeded:
-- Green checkmark ✅ = Deployed successfully
-- Red X ❌ = Build failed (check logs)
-- Yellow spinner 🔄 = Building...
-
----
-
-## Quick Reference Commands
-
-```bash
-# Navigate to project
-cd /Users/yonatandegefu/Library/CloudStorage/Box-Box/academic-website
-
-# Preview locally
-npm run dev                    # Start server at localhost:4321
-# Press Ctrl+C to stop
-
-# Publish changes
-git add .                      # Stage all changes
-git commit -m "description"    # Save changes
-git push                       # Deploy to live site
-
-# Check status
-git status                     # See what changed
-git log                        # See commit history
-
-# View your site
-# Local: http://localhost:4321
-# Live: https://ydegefu-research.vercel.app
-# GitHub: https://github.com/YonaNeg/academic-website
-```
-
----
-
-## File Locations Quick Reference
-
-| What to Update | File Location |
-|---------------|--------------|
-| Home page content | `src/pages/index.astro` |
-| About page bio | `src/pages/about.astro` |
-| Research areas | `src/pages/research.astro` |
-| Publications | `src/pages/publications.astro` |
-| CV | `src/pages/cv.astro` |
-| Navigation links | `src/layouts/BaseLayout.astro` |
-| Your name (appears everywhere) | `src/layouts/BaseLayout.astro` |
-| Colors/theme | `src/layouts/BaseLayout.astro` |
-| Add images/PDFs | Put in `public/` folder |
-
----
-
-## Tips for Success
-
-1. **Make small changes** - Edit one thing at a time, test, then publish
-2. **Test locally first** - Run `npm run dev` to preview before publishing
-3. **Commit often** - Better to have many small commits than one huge one
-4. **Write good commit messages** - Future you will thank you!
-5. **Keep backups** - GitHub is your backup, but you can also copy the folder
-
----
-
-## Need Help?
-
-- **Astro Docs:** https://docs.astro.build
-- **Vercel Docs:** https://vercel.com/docs
-- **Git Basics:** https://git-scm.com/doc
-- **This file!** Re-read this guide whenever you need to make changes
-
----
-
-## Adding New Pages (Advanced)
-
-Want to add a blog or teaching page?
-
-1. Create new file: `src/pages/blog.astro`
-2. Copy structure from existing page
-3. Add nav link in `src/layouts/BaseLayout.astro`:
-```html
-<li><a href="/blog">Blog</a></li>
-```
-4. Publish: `git add . && git commit -m "Added blog page" && git push`
-
----
-
-**Remember:** You built this! Every update you make is just editing text files and running `git push`. You've got this! 💪
-
-Last updated: December 28, 2025
+Last updated: November 17, 2026.

@@ -1,0 +1,38 @@
+---
+import type { Publication } from '../data/publications';
+interface Props { publication: Publication; }
+const { publication } = Astro.props;
+const { figure, coFirstAuthors = [] } = publication;
+---
+
+<article
+  class:list={['publication-entry', { 'publication-entry-with-figure': !!figure }]}
+  aria-labelledby={'publication-' + publication.id}
+>
+  {figure && (
+    <figure class="publication-figure">
+      <a href={figure.src} target="_blank" rel="noopener noreferrer" aria-label={'View full-size graphical abstract for ' + publication.title}>
+        <img src={figure.src} alt={figure.alt} width={figure.width} height={figure.height} loading="lazy" decoding="async" />
+        <span class="figure-caption">View full-size figure</span>
+      </a>
+    </figure>
+  )}
+  <div class="publication-body">
+    <h3 id={'publication-' + publication.id}>
+      <a href={publication.links[0].href} target="_blank" rel="noopener noreferrer">{publication.title}</a>
+    </h3>
+    <p class="authors">
+      {publication.authors.map((author, index) => (
+        <>{index > 0 ? ', ' : ''}{author === 'Degefu YN' ? <strong>{author}</strong> : author}{coFirstAuthors.includes(author) ? '*' : ''}</>
+      ))}
+    </p>
+    <p class="paper-venue"><em>{publication.venue}</em>, {publication.year}; {publication.citation}</p>
+    <p class="paper-summary">{publication.summary}</p>
+    <div class="pub-links">
+      {publication.links.map(({ label, href }) => (
+        <a href={href} target="_blank" rel="noopener noreferrer">{label}</a>
+      ))}
+    </div>
+    {coFirstAuthors.length > 0 && <p class="note">*Co-first authors</p>}
+  </div>
+</article>

@@ -2,15 +2,12 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="About - Yonatan N. Degefu">
+<BaseLayout title="About - Yonatan N. Degefu" description="About Yonatan N. Degefu: biomedical engineering research, education, and experience in computational biology and systems pharmacology.">
   <div class="about-container">
+    <p class="eyebrow page-kicker">Background & experience</p>
     <h1>About Me</h1>
 
     <section class="bio-section">
-      <div class="profile-image">
-        <!-- Add your photo here -->
-        <div class="placeholder-image">YND</div>
-      </div>
       <div class="bio-content">
         <p>
           I am a PhD candidate in Biomedical Engineering at the University of Virginia, working in the
@@ -62,7 +59,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <p class="organization">Fallahi-Sichani Lab, University of Virginia</p>
           <p class="date">November 2021 - Present</p>
           <ul>
-            <li>Developed ODE-based mechanistic modeling framework to characterize AP-1 transcriptional factor dynamics</li>
+            <li>Developed ODE-based mechanistic modeling framework to characterize AP-1 transcription factor dynamics</li>
             <li>Built computational pipelines for calibrating models from single-cell multiplexed imaging data</li>
             <li>Integrated Boolean modeling and partial correlation networks to construct de novo regulatory networks</li>
             <li>Mentored summer undergraduate researchers in quantitative biology and data science</li>
@@ -92,162 +89,3 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </section>
   </div>
 </BaseLayout>
-
-<style>
-  .about-container {
-    max-width: 900px;
-    margin: 0 auto;
-  }
-
-  h1 {
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
-    color: #00ff41;
-    text-shadow: 0 0 20px rgba(0, 255, 65, 0.5);
-  }
-
-  h1::before {
-    content: '# ';
-  }
-
-  h2 {
-    font-size: 2rem;
-    margin: 3rem 0 1.5rem;
-    color: #00ff41;
-    padding-bottom: 0.5rem;
-    border-bottom: 2px solid #00ff41;
-  }
-
-  h2::before {
-    content: '## ';
-  }
-
-  .bio-section {
-    display: grid;
-    grid-template-columns: 200px 1fr;
-    gap: 3rem;
-    margin-bottom: 3rem;
-  }
-
-  .placeholder-image {
-    width: 200px;
-    height: 200px;
-    background-color: #0d0d0d;
-    border-radius: 4px;
-    border: 2px solid #00ff41;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #00ff41;
-    font-weight: 500;
-  }
-
-  .bio-content p {
-    margin-bottom: 1rem;
-    line-height: 1.8;
-    color: #c0c0c0;
-  }
-
-  .timeline {
-    position: relative;
-    padding-left: 2rem;
-  }
-
-  .timeline::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background-color: #00ff41;
-  }
-
-  .timeline-item {
-    position: relative;
-    padding-bottom: 2rem;
-  }
-
-  .timeline-marker {
-    position: absolute;
-    left: -2rem;
-    top: 0.5rem;
-    width: 12px;
-    height: 12px;
-    background-color: #00ff41;
-    border-radius: 50%;
-    border: 3px solid #1a1a1a;
-    box-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
-  }
-
-  .timeline-content h3 {
-    font-size: 1.25rem;
-    color: #e0e0e0;
-    margin-bottom: 0.25rem;
-  }
-
-  .institution,
-  .organization {
-    color: #a0a0a0;
-    font-weight: 500;
-    margin-bottom: 0.25rem;
-  }
-
-  .date {
-    color: #00ff41;
-    font-size: 0.9rem;
-    margin-bottom: 0.5rem;
-  }
-
-  .description {
-    color: #c0c0c0;
-    font-style: italic;
-    margin-top: 0.5rem;
-  }
-
-  .experience-list {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-  }
-
-  .experience-item h3 {
-    font-size: 1.25rem;
-    color: #e0e0e0;
-    margin-bottom: 0.25rem;
-  }
-
-  .experience-item ul {
-    margin-top: 0.75rem;
-    margin-left: 1.5rem;
-  }
-
-  .experience-item li {
-    margin-bottom: 0.5rem;
-    color: #c0c0c0;
-    line-height: 1.6;
-  }
-
-  .experience-item li::marker {
-    color: #00ff41;
-  }
-
-  @media (max-width: 768px) {
-    .bio-section {
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
-    }
-
-    .placeholder-image {
-      margin: 0 auto;
-    }
-
-    h1 {
-      font-size: 2rem;
-    }
-
-    h2 {
-      font-size: 1.5rem;
-    }
-  }
-</style>
