@@ -14,8 +14,13 @@ const selectedPublications = publications.filter(({ selected }) => selected);
       <p class="academic-role">PhD Candidate in Biomedical Engineering</p>
       <p class="academic-affiliation">University of Virginia · Fallahi-Sichani Lab</p>
       <div class="intro-bio">
-        <p>I study how cells change and how those changes affect their response to treatment. My work brings together experimental data and mathematical models, with a focus on melanoma and drug combinations for cancer and infectious diseases.</p>
-        <p><a href={withBase('/about/')}>More about me</a> · <a href={withBase('/research/')}>Explore the questions behind my research</a></p>
+        <p class="intro-lede">I use quantitative, systems-level approaches to understand complex biological systems and help turn that understanding into better therapies for patients.</p>
+        <ul class="intro-approaches">
+          <li><strong>Why treatments stop working.</strong> I build mechanistic models, calibrated to experimental data, to understand how cancer cells adapt and escape therapy, even without new mutations.</li>
+          <li><strong>Which drugs to combine, and at what dose.</strong> I use simulations and efficient experimental designs to compare drug combinations and dosing strategies, so the most promising options are tested first.</li>
+          <li><strong>Who is likely to benefit.</strong> I use interpretable machine learning to predict treatment outcomes and pinpoint the measurements behind each prediction. Those measurements are where biomarkers start: signals that could help match patients to the treatments most likely to work.</li>
+        </ul>
+        <p class="intro-next"><a href={withBase('/research/')}>Explore the questions behind my research</a> · <a href={withBase('/about/')}>Where I want to take this next</a></p>
       </div>
       <nav class="academic-links" aria-label="Contact and academic profiles">
         <a href="mailto:njr7jk@virginia.edu">Email</a>

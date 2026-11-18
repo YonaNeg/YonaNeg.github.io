@@ -11,6 +11,8 @@ export interface Publication {
   selected?: boolean;
   coFirstAuthors?: string[];
   figure?: { src: string; alt: string; width: number; height: number };
+  // Journal commentary about this paper, e.g. a Cell Press Preview.
+  highlight?: { note: string; title: string; href: string };
 }
 
 // Shared by the homepage and full publication list.
@@ -62,6 +64,11 @@ export const publications: Publication[] = [
     kind: 'journal',
     selected: true,
     summary: 'Pairwise drug response measurements guide the assembly of effective multidrug tuberculosis treatments.',
+    highlight: {
+      note: 'Highlighted in an accompanying Preview by Patterson & Palmer:',
+      title: 'Predicting in vivo activity of combination therapies from in vitro drug pairs in diverse environments',
+      href: 'https://doi.org/10.1016/j.xcrm.2022.100745',
+    },
     links: [
       { label: 'Paper', href: 'https://doi.org/10.1016/j.xcrm.2022.100737' },
       { label: 'PubMed', href: 'https://pubmed.ncbi.nlm.nih.gov/36084643/' },

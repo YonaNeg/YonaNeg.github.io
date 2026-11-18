@@ -3,7 +3,7 @@ import type { Publication } from '../data/publications';
 import { withBase } from '../utils/paths';
 interface Props { publication: Publication; }
 const { publication } = Astro.props;
-const { figure, coFirstAuthors = [] } = publication;
+const { figure, highlight, coFirstAuthors = [] } = publication;
 ---
 
 <article
@@ -28,6 +28,11 @@ const { figure, coFirstAuthors = [] } = publication;
       ))}
     </p>
     <p class="paper-venue"><em>{publication.venue}</em>, {publication.year}; {publication.citation}</p>
+    {highlight && (
+      <p class="paper-highlight">
+        {highlight.note} <a href={highlight.href} target="_blank" rel="noopener noreferrer">“{highlight.title}”</a>
+      </p>
+    )}
     <p class="paper-summary">{publication.summary}</p>
     <div class="pub-links">
       {publication.links.map(({ label, href }) => (

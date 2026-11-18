@@ -49,6 +49,10 @@ main { padding-block: 3rem 4.5rem; min-height: 70vh; }
 .academic-affiliation { color: var(--muted); margin-top: .15rem; font-size: 1rem; }
 .intro-bio { margin-top: 1.5rem; max-width: 76ch; }
 .intro-bio p + p { margin-top: .8rem; }
+.intro-lede { font-size: 1.2rem; line-height: 1.5; font-weight: 600; color: var(--ink); }
+.intro-approaches { list-style: none; display: grid; gap: .8rem; margin-top: 1.1rem; }
+.intro-approaches li { padding-left: 1rem; border-left: 2px solid var(--line); }
+.intro-next { margin-top: 1.2rem; }
 .academic-links { display: flex; gap: .7rem 1.4rem; flex-wrap: wrap; margin-top: 1.4rem; font-size: .925rem; }
 .home-section { margin-top: 2.5rem; }
 .section-heading { display: flex; justify-content: space-between; align-items: baseline; gap: 1.5rem; margin-bottom: 1.4rem; }
@@ -66,6 +70,7 @@ main { padding-block: 3rem 4.5rem; min-height: 70vh; }
 .publication-figure img { display: block; width: 100%; height: auto; border: 1px solid var(--line); background: white; }
 .figure-caption { display: block; margin-top: .4rem; font-size: .75rem; text-align: center; text-decoration: underline; }
 .paper-venue { font-size: .85rem; color: var(--muted); margin-top: .2rem; }
+.paper-highlight { font-size: .85rem; line-height: 1.55; margin-top: .55rem; padding-left: .75rem; border-left: 2px solid var(--accent); }
 .publication-status { font-style: italic; }
 .paper-summary { font-size: .925rem; margin-top: .55rem; color: var(--ink); }
 .paper-link { display: inline-block; font-size: .85rem; margin-top: .4rem; }
@@ -80,7 +85,9 @@ main { padding-block: 3rem 4.5rem; min-height: 70vh; }
 .page-kicker { margin-bottom: .5rem; }
 .intro { color: var(--muted); font-size: 1.0625rem; max-width: 75ch; margin-bottom: 2rem; }
 .bio-section { margin-block: 2rem; max-width: 75ch; }
-.bio-content p + p { margin-top: 1rem; }
+.bio-section p + p { margin-top: 1rem; }
+.about-lede { font-size: 1.15rem; line-height: 1.6; color: var(--ink); }
+.bio-section h3 { margin: 1.75rem 0 .45rem; }
 .education, .experience, .research-areas, .projects, .publications-section, .stats { margin-top: 2.5rem; }
 .timeline-item, .experience-item, .area, .project-card, .publication, .cv-item, .cv-pub { padding-block: 1.4rem; border-top: 1px solid var(--line); }
 .timeline-content h3, .experience-item h3, .area h3, .project-card h3, .publication h3, .cv-item h3 { margin-bottom: .5rem; }

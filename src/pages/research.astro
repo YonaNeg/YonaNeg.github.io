@@ -2,15 +2,19 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="Research - Yonatan N. Degefu" description="The questions motivating Yonatan N. Degefu's research on non-genetic cell heterogeneity, treatment response, and drug combinations, and how he approaches them.">
+<BaseLayout title="Research - Yonatan N. Degefu" description="The questions behind Yonatan N. Degefu's research on melanoma cell states, drug combinations, and treatment response, and the approaches used to investigate them.">
   <div class="research-container">
     <p class="eyebrow page-kicker">Questions behind the work</p>
     <h1>Research</h1>
 
     <section class="research-overview">
       <p class="intro">
-        Each project begins with its own biological question. Here are the problems that motivated
-        my work, the challenges they posed, and the approaches I used to investigate them.
+        One idea runs through these projects: how a biological system responds to treatment depends
+        on how its parts work together. Those parts might be proteins in a regulatory network,
+        pathways inside a cell, or drugs in a combination, and a change in one can ripple through
+        the others. Understanding those interactions helps explain why a treatment works, predict
+        when it will fail, and decide which options to test next. Below are the questions that
+        motivated each project, the challenges they posed, and how I approached them.
       </p>
     </section>
 
@@ -19,11 +23,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
       <article class="project-card" aria-labelledby="melanoma-question">
         <p class="project-context">Melanoma cell plasticity · Fallahi-Sichani Lab</p>
-        <h3 id="melanoma-question">Why do cancer cells respond differently to the same treatment?</h3>
+        <h3 id="melanoma-question">Why can two melanoma cells respond differently to the same drug?</h3>
         <p>
-          Cells can occupy different states without a change in their DNA, and those states can
-          influence how they respond to treatment. I want to understand the principles behind this
-          non-genetic heterogeneity: how cells integrate outside signals and make decisions.
+          Even cells with the same DNA can turn on different genes. In melanoma, those differences
+          can put cells in states that respond differently to treatment, and cells in drug-tolerant
+          states can survive therapy and contribute to relapse. I want to understand how
+          a cell interprets signals from its surroundings and what makes it switch from one state to another.
         </p>
         <p>
           I study AP-1, a group of proteins that helps control gene activity, by building mathematical
@@ -58,6 +63,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           MATLAB SimBiology. I used simulated experiments to explore drug interactions and dosing
           strategies, connecting proposed biological mechanisms with predicted treatment responses.
         </p>
+        <p class="project-insight">
+          The model provided a mechanistic rationale for the combination’s effect and informed dosing
+          strategies for both drug-sensitive and drug-resistant cells.
+        </p>
         <div class="keywords" aria-label="Skills used in the DNA damage response project">
           <span class="keyword">Quantitative systems pharmacology</span>
           <span class="keyword">MATLAB SimBiology</span>
@@ -83,7 +92,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </p>
         <p class="project-insight">
           These studies identified interpretable rules for assembling combinations and helped
-          prioritize treatments for further testing in tuberculosis models.
+          prioritize treatments for further testing in tuberculosis models. The Cell Reports Medicine
+          study was highlighted in an accompanying Preview, in which Patterson and Palmer described it
+          as a framework to “rationally prioritize combinations for clinical development.”
         </p>
         <div class="keywords" aria-label="Skills used in the tuberculosis projects">
           <span class="keyword">Efficient experimental design</span>
@@ -94,6 +105,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <div class="project-links">
           <a href="https://doi.org/10.1016/j.xcrm.2022.100737" class="link">Cell Reports Medicine (2022)</a>
           <a href="https://doi.org/10.1016/j.cels.2021.08.004" class="link">Cell Systems (2021)</a>
+          <a href="https://doi.org/10.1016/j.xcrm.2022.100745" class="link">Preview by Patterson &amp; Palmer (2022)</a>
         </div>
       </article>
 
