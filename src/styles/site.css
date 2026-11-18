@@ -66,9 +66,13 @@ main { padding-block: 3rem 4.5rem; min-height: 70vh; }
 .publication-entry h3 a:hover { text-decoration: underline; }
 .publication-entry .authors { font-size: .875rem; margin-top: .45rem; line-height: 1.6; }
 .publication-figure { min-width: 0; }
-.publication-figure a { display: block; text-decoration: none; }
+.publication-figure > a { display: block; text-decoration: none; }
 .publication-figure img { display: block; width: 100%; height: auto; border: 1px solid var(--line); background: white; }
 .figure-caption { display: block; margin-top: .4rem; font-size: .75rem; text-align: center; text-decoration: underline; }
+.figure-credit { margin-top: .15rem; font-size: .75rem; color: var(--muted); text-align: center; }
+.publication-entry-wide-figure { display: flex; flex-direction: column; }
+.publication-entry-wide-figure .publication-figure { order: 1; width: 100%; max-width: 640px; margin: 1.1rem 0 0; }
+.publication-entry-wide-figure .figure-caption, .publication-entry-wide-figure .figure-credit { text-align: left; }
 .paper-venue { font-size: .85rem; color: var(--muted); margin-top: .2rem; }
 .paper-highlight { font-size: .85rem; line-height: 1.55; margin-top: .55rem; padding-left: .75rem; border-left: 2px solid var(--accent); }
 .publication-status { font-style: italic; }

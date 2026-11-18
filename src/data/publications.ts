@@ -10,7 +10,14 @@ export interface Publication {
   links: { label: string; href: string }[];
   selected?: boolean;
   coFirstAuthors?: string[];
-  figure?: { src: string; alt: string; width: number; height: number };
+  figure?: {
+    src: string;
+    alt: string;
+    width: number;
+    height: number;
+    // Attribution for figures reused under an open license.
+    credit?: { text: string; license: string; licenseHref: string };
+  };
   // Journal commentary about this paper, e.g. a Cell Press Preview.
   highlight?: { note: string; title: string; href: string };
 }
@@ -52,6 +59,17 @@ export const publications: Publication[] = [
       { label: 'Paper', href: 'https://doi.org/10.1128/aac.00090-23' },
       { label: 'PubMed', href: 'https://pubmed.ncbi.nlm.nih.gov/37278639/' },
     ],
+    figure: {
+      src: '/images/publications/abscessus-synergies-aac-2023.jpg',
+      alt: 'Schematic of drug interaction measurement with DiaMOND: (A) single-drug dose responses along each axis and an equal mixture of two drugs along the diagonal; (B) an antibiotic dose response with a constant dose of a potentiating agent; (C) a combination dose-response curve shifted left of the single-drug curve indicates synergy, and shifted right indicates antagonism.',
+      width: 1350,
+      height: 389,
+      credit: {
+        text: 'Figure 1, Van et al. (2023)',
+        license: 'CC BY 4.0',
+        licenseHref: 'https://creativecommons.org/licenses/by/4.0/',
+      },
+    },
   },
   {
     id: 'tb-design-principles-2022',
