@@ -4,25 +4,18 @@ import { withBase } from '../utils/paths';
 interface Props { publication: Publication; }
 const { publication } = Astro.props;
 const { figure, highlight, coFirstAuthors = [] } = publication;
-// Wide figures are too small to read in the side column, so they sit below the text.
-const wideFigure = !!figure && figure.width / figure.height > 1.6;
 ---
 
 <article
-  class:list={['publication-entry', { 'publication-entry-with-figure': !!figure && !wideFigure, 'publication-entry-wide-figure': wideFigure }]}
+  class:list={['publication-entry', { 'publication-entry-with-figure': !!figure }]}
   aria-labelledby={'publication-' + publication.id}
 >
   {figure && (
     <figure class="publication-figure">
-      <a href={withBase(figure.src)} target="_blank" rel="noopener noreferrer" aria-label={'View full-size figure for ' + publication.title}>
+      <a href={withBase(figure.src)} target="_blank" rel="noopener noreferrer" aria-label={'View full-size graphical abstract for ' + publication.title}>
         <img src={withBase(figure.src)} alt={figure.alt} width={figure.width} height={figure.height} loading="lazy" decoding="async" />
         <span class="figure-caption">View full-size figure</span>
       </a>
-      {figure.credit && (
-        <figcaption class="figure-credit">
-          {figure.credit.text} · <a href={figure.credit.licenseHref} target="_blank" rel="noopener noreferrer">{figure.credit.license}</a>
-        </figcaption>
-      )}
     </figure>
   )}
   <div class="publication-body">
