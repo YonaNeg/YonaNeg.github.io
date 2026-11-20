@@ -2,9 +2,21 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { Image } from 'astro:assets';
 import portrait from '../assets/yonatan-degefu.jpeg';
-import PublicationEntry from '../components/PublicationEntry.astro';
+import StateLandscape from '../components/sketches/StateLandscape.astro';
+import DoseResponse from '../components/sketches/DoseResponse.astro';
+import DecisionTree from '../components/sketches/DecisionTree.astro';
 import { publications } from '../data/publications';
 import { withBase } from '../utils/paths';
+
+// Each card is a one-line teaser; the full story lives in the matching section of the research page.
+const questions = [
+  { title: 'Why treatments stop working', summary: 'How cancer cells adapt and escape therapy, even without new mutations.', anchor: 'melanoma', Sketch: StateLandscape },
+  { title: 'Which drugs to combine, and at what dose', summary: 'Simulations and efficient experiments that compare combinations and doses, so the most promising are tested first.', anchor: 'drug-combinations', Sketch: DoseResponse },
+  { title: 'Who is likely to benefit', summary: 'Interpretable machine learning that predicts treatment outcomes and shows which measurements drive each prediction.', anchor: 'tuberculosis', Sketch: DecisionTree },
+];
+
+const authorRole = ({ authors, coFirstAuthors = [] }: (typeof publications)[number]) =>
+  authors[0] === 'Degefu YN' ? 'First author' : coFirstAuthors.includes('Degefu YN') ? 'Co-first author' : undefined;
 const selectedPublications = publications.filter(({ selected }) => selected);
 ---
 <BaseLayout title="Yonatan N. Degefu | Biomedical Engineering & Computational Biology">
@@ -14,23 +26,34 @@ const selectedPublications = publications.filter(({ selected }) => selected);
       <p class="academic-role">PhD Candidate in Biomedical Engineering</p>
       <p class="academic-affiliation">University of Virginia · Fallahi-Sichani Lab</p>
       <div class="intro-bio">
-        <p class="intro-lede">I use quantitative, systems-level approaches to understand complex biological systems and help turn that understanding into better therapies for patients.</p>
-        <ul class="intro-approaches">
-          <li><strong>Why treatments stop working.</strong> I build mechanistic models, calibrated to experimental data, to understand how cancer cells adapt and escape therapy, even without new mutations.</li>
-          <li><strong>Which drugs to combine, and at what dose.</strong> I use simulations and efficient experimental designs to compare drug combinations and dosing strategies, so the most promising options are tested first.</li>
-          <li><strong>Who is likely to benefit.</strong> I use interpretable machine learning to predict treatment outcomes and pinpoint the measurements behind each prediction. Those measurements are where biomarkers start: signals that could help match patients to the treatments most likely to work.</li>
-        </ul>
-        <p class="intro-next"><a href={withBase('/research/')}>Explore the questions behind my research</a> · <a href={withBase('/about/')}>Where I want to take this next</a></p>
+        <p class="intro-lede">I use quantitative, systems-level approaches to understand complex biological systems, and to gain insight into when and why therapies fail and how they can be improved.</p>
+        <p class="intro-summary">I combine mechanistic modeling and interpretable machine learning with experimental data, in academic labs and in industry, most recently as a Systems Medicine intern at AstraZeneca.</p>
       </div>
       <nav class="academic-links" aria-label="Contact and academic profiles">
+        <a class="button" href={withBase('/files/cv.pdf')} target="_blank" rel="noopener noreferrer">CV (PDF)</a>
         <a href="mailto:njr7jk@virginia.edu">Email</a>
-        <a href="https://scholar.google.com/citations?user=POp9Bk4AAAAJ&amp;hl=en" target="_blank" rel="noopener noreferrer">Google Scholar</a>
-        <a href={withBase('/files/cv.pdf')} target="_blank" rel="noopener noreferrer">CV (PDF)</a>
         <a href="https://www.linkedin.com/in/yonatan-degefu-b16955a9/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://scholar.google.com/citations?user=POp9Bk4AAAAJ&amp;hl=en" target="_blank" rel="noopener noreferrer">Google Scholar</a>
       </nav>
     </div>
     <div class="portrait-frame">
       <Image src={portrait} alt="Yonatan N. Degefu" width={480} format="webp" quality={85} loading="eager" fetchpriority="high" class="profile-portrait" />
+    </div>
+  </section>
+
+  <section class="home-section" aria-labelledby="research-questions">
+    <div class="section-heading">
+      <h2 id="research-questions">Questions I work on</h2>
+      <a href={withBase('/research/')}>More on my research</a>
+    </div>
+    <div class="question-grid">
+      {questions.map(({ title, summary, anchor, Sketch }) => (
+        <article class="question-card">
+          <div class="sketch-frame"><Sketch /></div>
+          <h3><a href={withBase('/research/') + '#' + anchor}>{title}</a></h3>
+          <p>{summary}</p>
+        </article>
+      ))}
     </div>
   </section>
 
@@ -39,9 +62,19 @@ const selectedPublications = publications.filter(({ selected }) => selected);
       <h2 id="selected-publications">Selected publications</h2>
       <a href={withBase('/publications/')}>All publications</a>
     </div>
-    <div class="paper-list">
-      {selectedPublications.map((publication) => <PublicationEntry publication={publication} />)}
-    </div>
+    <ol class="pub-compact">
+      {selectedPublications.map((publication) => {
+        const role = authorRole(publication);
+        return (
+          <li>
+            <a class="pub-compact-title" href={publication.links[0].href} target="_blank" rel="noopener noreferrer">{publication.title}</a>
+            <p class="pub-compact-meta">
+              <em>{publication.venue}</em> · {publication.year}{role && <> · <span class="pub-role">{role}</span></>}
+              {publication.highlight && <> · <a href={publication.highlight.href} target="_blank" rel="noopener noreferrer">{publication.highlight.note.replace(/:$/, '')}</a></>}
+            </p>
+          </li>
+        );
+      })}
+    </ol>
   </section>
-
 </BaseLayout>

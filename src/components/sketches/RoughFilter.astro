@@ -1,0 +1,9 @@
+---
+// Gives sketch lines a slight hand-drawn wobble. Labels are left unfiltered so they stay crisp.
+interface Props { id: string; seed?: number; }
+const { id, seed = 3 } = Astro.props;
+---
+<filter id={id} x="-5%" y="-5%" width="110%" height="110%">
+  <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed={seed} result="noise" />
+  <feDisplacementMap in="SourceGraphic" in2="noise" scale="2.6" xChannelSelector="R" yChannelSelector="G" />
+</filter>

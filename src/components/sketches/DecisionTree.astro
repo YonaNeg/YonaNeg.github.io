@@ -1,0 +1,31 @@
+---
+// Interpretable prediction as a small decision tree: measurements in, a readable rule out.
+import RoughFilter from './RoughFilter.astro';
+import { check, cross } from './geometry';
+---
+<svg class="sketch" viewBox="0 0 280 180" role="img" aria-label="Sketch of a decision tree. It asks whether measurement A is high, then whether measurement B is high, and ends in leaves marking whether a treatment is predicted to work.">
+  <defs><RoughFilter id="rough-tree" seed={11} /></defs>
+  <g filter="url(#rough-tree)">
+    <path class="sk-line sk-muted" d="M110 40 L92 78 M170 40 L218 80 M66 106 L48 137 M110 106 L122 137" />
+    <rect class="sk-line sk-fill-paper" x="60" y="12" width="160" height="28" rx="6" />
+    <rect class="sk-line sk-fill-paper" x="8" y="78" width="160" height="28" rx="6" />
+    <circle class="sk-line sk-green sk-fill-green" cx="44" cy="150" r="13" />
+    <path class="sk-line sk-green" d={check(44, 150)} />
+    <circle class="sk-line sk-warm sk-fill-warm" cx="126" cy="150" r="13" />
+    <path class="sk-line sk-warm" d={cross(126, 150)} />
+    <circle class="sk-line sk-warm sk-fill-warm" cx="226" cy="92" r="13" />
+    <path class="sk-line sk-warm" d={cross(226, 92)} />
+    <circle class="sk-line sk-green sk-fill-green" cx="178" cy="138" r="8" />
+    <path class="sk-line sk-green sk-thin" d="M174.5 138 L177 140.8 L182 135" />
+    <circle class="sk-line sk-warm sk-fill-warm" cx="178" cy="162" r="8" />
+    <path class="sk-line sk-warm sk-thin" d="M175 159 L181 165 M181 159 L175 165" />
+  </g>
+  <text x="140" y="31" text-anchor="middle" class="sk-label sk-strong">measurement A high?</text>
+  <text x="88" y="97" text-anchor="middle" class="sk-label sk-strong">measurement B high?</text>
+  <text x="96" y="62" text-anchor="end" class="sk-label sk-small">yes</text>
+  <text x="198" y="58" class="sk-label sk-small">no</text>
+  <text x="50" y="126" text-anchor="end" class="sk-label sk-small">yes</text>
+  <text x="122" y="126" class="sk-label sk-small">no</text>
+  <text x="191" y="142" class="sk-label">works</text>
+  <text x="191" y="166" class="sk-label">doesn’t work</text>
+</svg>

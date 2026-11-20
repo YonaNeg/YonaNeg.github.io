@@ -49,6 +49,7 @@ Confirm the Deploy to GitHub Pages workflow succeeded. Do not stage `.env` files
 | Publication records | `src/data/publications.ts` |
 | Publication entry layout | `src/components/PublicationEntry.astro` |
 | CV education entries | `src/pages/cv.astro` |
+| Research sketches | `src/components/sketches/` |
 | Navigation and footer | `src/layouts/BaseLayout.astro` |
 | Colors, typography, and layout | `src/styles/site.css` |
 

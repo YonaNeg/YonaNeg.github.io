@@ -1,0 +1,32 @@
+---
+// One drug combination applied to three bacterial isolates: two are cleared, one survives.
+import RoughFilter from './RoughFilter.astro';
+import { arrowhead } from './geometry';
+---
+<svg class="sketch" viewBox="0 0 280 180" role="img" aria-label="Sketch of one drug combination applied to three isolates of the same bacterial species. Isolates 1 and 2 are cleared; isolate 3 survives.">
+  <defs><RoughFilter id="rough-isolates" seed={2} /></defs>
+  <g filter="url(#rough-isolates)">
+    <rect class="sk-line sk-fill-paper" x="112" y="12" width="56" height="20" rx="10" />
+    <path class="sk-fill-blue-solid" d="M122 12.5 H140 V31.5 H122 A9.5 9.5 0 0 1 122 12.5 Z" />
+    <path class="sk-fill-warm-solid" d="M140 12.5 H158 A9.5 9.5 0 0 1 158 31.5 H140 Z" />
+    <rect class="sk-line" x="112" y="12" width="56" height="20" rx="10" />
+    <path class="sk-line" d="M140 12 V32" />
+    <path class="sk-line sk-muted" d="M126 36 L66 72 M140 36 V70 M154 36 L214 72" />
+    <path class="sk-line sk-muted" d={arrowhead(66, 72, 80, 64, 7)} />
+    <path class="sk-line sk-muted" d={arrowhead(140, 72, 140, 58, 7)} />
+    <path class="sk-line sk-muted" d={arrowhead(214, 72, 200, 64, 7)} />
+    <rect class="sk-line sk-muted sk-dash" x="28" y="82" width="56" height="22" rx="11" transform="rotate(-6 56 93)" />
+    <rect class="sk-line sk-muted sk-dash" x="112" y="82" width="56" height="22" rx="11" transform="rotate(4 140 93)" />
+    <rect class="sk-line sk-warm sk-fill-warm" x="196" y="82" width="56" height="22" rx="11" transform="rotate(-3 224 93)" />
+    <circle class="sk-dot-warm" cx="212" cy="93" r="2.5" />
+    <circle class="sk-dot-warm" cx="224" cy="91" r="2.5" />
+    <circle class="sk-dot-warm" cx="236" cy="94" r="2.5" />
+  </g>
+  <text x="104" y="27" text-anchor="end" class="sk-label sk-small">same combination</text>
+  <text x="56" y="134" text-anchor="middle" class="sk-label">isolate 1</text>
+  <text x="140" y="134" text-anchor="middle" class="sk-label">isolate 2</text>
+  <text x="224" y="134" text-anchor="middle" class="sk-label">isolate 3</text>
+  <text x="56" y="156" text-anchor="middle" class="sk-label sk-small">cleared</text>
+  <text x="140" y="156" text-anchor="middle" class="sk-label sk-small">cleared</text>
+  <text x="224" y="156" text-anchor="middle" class="sk-label sk-strong">survives</text>
+</svg>

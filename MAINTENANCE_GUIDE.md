@@ -41,12 +41,13 @@ npm run preview
 src/
   layouts/BaseLayout.astro    Navigation, metadata, footer
   pages/
-    index.astro              Homepage and featured work
+    index.astro              Homepage: introduction, research question cards, selected papers
     about.astro              Biography, education, experience
-    research.astro           Research areas and projects
+    research.astro           Research questions, each with a sketch
     publications.astro       Papers, preprints, methods
-    cv.astro                 Education only
+    cv.astro                 Education and CV download
   components/PublicationEntry.astro  Shared publication layout
+  components/sketches/       Inline SVG research sketches, colored by the theme
   data/publications.ts       Publication records and homepage selections
   assets/yonatan-degefu.jpeg  Homepage portrait, optimized at build time
   styles/site.css            Shared design, mobile and print styles
@@ -76,6 +77,10 @@ External links that open new tabs should include `rel="noopener noreferrer"`.
 
 The CV webpage at `/cv` contains education only. Edit the degree, institution, dates, and existing education details in `src/pages/cv.astro`. Replace `public/files/cv.pdf` to update the downloadable CV; the homepage and education page link to this file.
 
+### Edit a research sketch
+
+Each sketch in `src/components/sketches/` is inline SVG. Shapes use `sk-*` classes from `src/styles/site.css`, so their colors follow the light and dark themes; avoid hard-coded colors and `style` attributes, which the content security policy blocks. The homepage cards reuse the first three sketches and link to the matching section of the research page by its `id`.
+
 ### Add a publication figure
 
 Store the original figure in `public/images/publications/`, using a descriptive filename. Add its `src`, `alt`, `width`, and `height` to the corresponding record in `src/data/publications.ts`. The shared component displays the figure without cropping and links to the original full-size file. Keep alternative text descriptive of the scientific content.
@@ -88,7 +93,7 @@ Replace `src/assets/yonatan-degefu.jpeg` to update the homepage portrait. Astro 
 
 ### Change the design
 
-Edit `src/styles/site.css`. The variables at the top control the light academic palette. The file also contains responsive layouts, keyboard focus indicators, and print styles.
+Edit `src/styles/site.css`. The variables at the top control the light palette, and the `prefers-color-scheme: dark` block below them controls the dark palette, which follows the visitor's system setting. A manual theme toggle would need JavaScript, which the content security policy currently blocks. The file also contains responsive layouts, keyboard focus indicators, and print styles.
 
 ## Check and publish
 

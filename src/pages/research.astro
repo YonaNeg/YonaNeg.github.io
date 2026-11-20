@@ -1,5 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import StateLandscape from '../components/sketches/StateLandscape.astro';
+import DoseResponse from '../components/sketches/DoseResponse.astro';
+import DecisionTree from '../components/sketches/DecisionTree.astro';
+import Isolates from '../components/sketches/Isolates.astro';
 ---
 
 <BaseLayout title="Research - Yonatan N. Degefu" description="The questions behind Yonatan N. Degefu's research on melanoma cell states, drug combinations, and treatment response, and the approaches used to investigate them.">
@@ -21,114 +25,138 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <section class="projects" aria-labelledby="research-questions">
       <h2 id="research-questions">Questions I investigate</h2>
 
-      <article class="project-card" aria-labelledby="melanoma-question">
-        <p class="project-context">Melanoma cell plasticity · Fallahi-Sichani Lab</p>
-        <h3 id="melanoma-question">Why can two melanoma cells respond differently to the same drug?</h3>
-        <p>
-          Even cells with the same DNA can turn on different genes. In melanoma, those differences
-          can put cells in states that respond differently to treatment, and cells in drug-tolerant
-          states can survive therapy and contribute to relapse. I want to understand how
-          a cell interprets signals from its surroundings and what makes it switch from one state to another.
-        </p>
-        <p>
-          I study AP-1, a group of proteins that helps control gene activity, by building mathematical
-          models of how its components interact. I compare the models with measurements of individual
-          melanoma cells and work with experimental collaborators to test predictions about how
-          changes in the network shift cell states.
-        </p>
-        <p class="project-insight">
-          Our work showed how interactions within the AP-1 network help explain the variety of
-          melanoma cell states and how those states change in response to treatment.
-        </p>
-        <div class="keywords" aria-label="Skills used in the melanoma project">
-          <span class="keyword">Mechanistic modeling</span>
-          <span class="keyword">Single-cell data analysis</span>
-          <span class="keyword">Model calibration</span>
-          <span class="keyword">Network analysis</span>
+      <article class="project-card" id="melanoma" aria-labelledby="melanoma-question">
+        <div class="project-text">
+          <p class="project-context">Melanoma cell plasticity · Fallahi-Sichani Lab</p>
+          <h3 id="melanoma-question">Why can two melanoma cells respond differently to the same drug?</h3>
+          <p>
+            Even cells with the same DNA can turn on different genes. In melanoma, those differences
+            can put cells in states that respond differently to treatment, and cells in drug-tolerant
+            states can survive therapy and contribute to relapse. I want to understand how
+            a cell interprets signals from its surroundings and what makes it switch from one state to another.
+          </p>
+          <p>
+            I study AP-1, a group of proteins that helps control gene activity, by building mathematical
+            models of how its components interact. I compare the models with measurements of individual
+            melanoma cells and work with experimental collaborators to test predictions about how
+            changes in the network shift cell states.
+          </p>
+          <p class="project-insight">
+            Our work showed how interactions within the AP-1 network help explain the variety of
+            melanoma cell states and how those states change in response to treatment.
+          </p>
+          <div class="keywords" aria-label="Skills used in the melanoma project">
+            <span class="keyword">Mechanistic modeling</span>
+            <span class="keyword">Single-cell data analysis</span>
+            <span class="keyword">Model calibration</span>
+            <span class="keyword">Network analysis</span>
+          </div>
+          <div class="project-links">
+            <a href="https://doi.org/10.1016/j.celrep.2026.117965" class="link">Cell Reports (2026)</a>
+          </div>
         </div>
-        <div class="project-links">
-          <a href="https://doi.org/10.1016/j.celrep.2026.117965" class="link">Cell Reports (2026)</a>
-        </div>
+        <figure class="project-sketch">
+          <div class="sketch-frame"><StateLandscape /></div>
+          <figcaption>A cell reads signals from its surroundings, a drug among them, through its AP-1 network. How that network interprets them shapes which state the cell settles into.</figcaption>
+        </figure>
       </article>
 
-      <article class="project-card" aria-labelledby="dna-damage-question">
-        <p class="project-context">DNA damage response · AstraZeneca</p>
-        <h3 id="dna-damage-question">How can we choose which cancer drugs to combine?</h3>
-        <p>
-          Knowing how a drug works on its own is only part of the problem. To understand a combination,
-          we also need to understand how the pathways it targets interact.
-        </p>
-        <p>
-          During my AstraZeneca internship, I developed a model of DNA damage response pathways in
-          MATLAB SimBiology. I used simulated experiments to explore drug interactions and dosing
-          strategies, connecting proposed biological mechanisms with predicted treatment responses.
-        </p>
-        <p class="project-insight">
-          The model provided a mechanistic rationale for the combination’s effect and informed dosing
-          strategies for both drug-sensitive and drug-resistant cells.
-        </p>
-        <div class="keywords" aria-label="Skills used in the DNA damage response project">
-          <span class="keyword">Quantitative systems pharmacology</span>
-          <span class="keyword">MATLAB SimBiology</span>
-          <span class="keyword">Simulation</span>
-          <span class="keyword">Drug interaction analysis</span>
+      <article class="project-card" id="drug-combinations" aria-labelledby="dna-damage-question">
+        <div class="project-text">
+          <p class="project-context">DNA damage response · AstraZeneca</p>
+          <h3 id="dna-damage-question">How can we choose which cancer drugs to combine?</h3>
+          <p>
+            Knowing how a drug works on its own is only part of the problem. To understand a combination,
+            we also need to understand how the pathways it targets interact.
+          </p>
+          <p>
+            During my AstraZeneca internship, I developed a model of DNA damage response pathways in
+            MATLAB SimBiology. I used simulated experiments to explore drug interactions and dosing
+            strategies, connecting proposed biological mechanisms with predicted treatment responses.
+          </p>
+          <p class="project-insight">
+            The model provided a mechanistic rationale for the combination’s effect and informed dosing
+            strategies for both drug-sensitive and drug-resistant cells.
+          </p>
+          <div class="keywords" aria-label="Skills used in the DNA damage response project">
+            <span class="keyword">Quantitative systems pharmacology</span>
+            <span class="keyword">MATLAB SimBiology</span>
+            <span class="keyword">Simulation</span>
+            <span class="keyword">Drug interaction analysis</span>
+          </div>
         </div>
+        <figure class="project-sketch">
+          <div class="sketch-frame"><DoseResponse /></div>
+          <figcaption>When drugs act in synergy, the combination reaches the same effect at lower doses. Simulations show where and why.</figcaption>
+        </figure>
       </article>
 
-      <article class="project-card" aria-labelledby="tb-question">
-        <p class="project-context">Tuberculosis drug combinations · Aldridge Lab</p>
-        <h3 id="tb-question">How can we find better drug combinations without testing them all?</h3>
-        <p>
-          This work was motivated by the need to improve long-standing tuberculosis treatments as
-          bacteria developed resistance. The number of possible drug combinations made testing every
-          option impractical. We needed creative ways to measure combinations efficiently and make
-          sense of many different drug responses at once.
-        </p>
-        <p>
-          We combined efficient drug-interaction measurements with machine learning to interpret
-          high-dimensional data. I worked on automated analysis pipelines and models that linked
-          laboratory measurements to treatment outcomes in mouse studies. We also asked whether
-          measurements of drug pairs could guide the design of larger combinations.
-        </p>
-        <p class="project-insight">
-          These studies identified interpretable rules for assembling combinations and helped
-          prioritize treatments for further testing in tuberculosis models. The Cell Reports Medicine
-          study was highlighted in an accompanying Preview, in which Patterson and Palmer described it
-          as a framework to “rationally prioritize combinations for clinical development.”
-        </p>
-        <div class="keywords" aria-label="Skills used in the tuberculosis projects">
-          <span class="keyword">Efficient experimental design</span>
-          <span class="keyword">Automated data analysis</span>
-          <span class="keyword">Machine learning</span>
-          <span class="keyword">Interpretable prediction</span>
+      <article class="project-card" id="tuberculosis" aria-labelledby="tb-question">
+        <div class="project-text">
+          <p class="project-context">Tuberculosis drug combinations · Aldridge Lab</p>
+          <h3 id="tb-question">How can we find better drug combinations without testing them all?</h3>
+          <p>
+            This work was motivated by the need to improve long-standing tuberculosis treatments as
+            bacteria developed resistance. The number of possible drug combinations made testing every
+            option impractical. We needed creative ways to measure combinations efficiently and make
+            sense of many different drug responses at once.
+          </p>
+          <p>
+            We combined efficient drug-interaction measurements with machine learning to interpret
+            high-dimensional data. I worked on automated analysis pipelines and models that linked
+            laboratory measurements to treatment outcomes in mouse studies. We also asked whether
+            measurements of drug pairs could guide the design of larger combinations.
+          </p>
+          <p class="project-insight">
+            These studies identified interpretable rules for assembling combinations and helped
+            prioritize treatments for further testing in tuberculosis models. The Cell Reports Medicine
+            study was highlighted in an accompanying Preview, in which Patterson and Palmer described it
+            as a framework to “rationally prioritize combinations for clinical development.”
+          </p>
+          <div class="keywords" aria-label="Skills used in the tuberculosis projects">
+            <span class="keyword">Efficient experimental design</span>
+            <span class="keyword">Automated data analysis</span>
+            <span class="keyword">Machine learning</span>
+            <span class="keyword">Interpretable prediction</span>
+          </div>
+          <div class="project-links">
+            <a href="https://doi.org/10.1016/j.xcrm.2022.100737" class="link">Cell Reports Medicine (2022)</a>
+            <a href="https://doi.org/10.1016/j.cels.2021.08.004" class="link">Cell Systems (2021)</a>
+            <a href="https://doi.org/10.1016/j.xcrm.2022.100745" class="link">Preview by Patterson &amp; Palmer (2022)</a>
+          </div>
         </div>
-        <div class="project-links">
-          <a href="https://doi.org/10.1016/j.xcrm.2022.100737" class="link">Cell Reports Medicine (2022)</a>
-          <a href="https://doi.org/10.1016/j.cels.2021.08.004" class="link">Cell Systems (2021)</a>
-          <a href="https://doi.org/10.1016/j.xcrm.2022.100745" class="link">Preview by Patterson &amp; Palmer (2022)</a>
-        </div>
+        <figure class="project-sketch">
+          <div class="sketch-frame"><DecisionTree /></div>
+          <figcaption>Interpretable models read like rules: which measurements predict that a treatment will work, so the best candidates are tested first.</figcaption>
+        </figure>
       </article>
 
-      <article class="project-card" aria-labelledby="abscessus-question">
-        <p class="project-context"><i>Mycobacterium abscessus</i> drug interactions · Aldridge Lab</p>
-        <h3 id="abscessus-question">Why does the same drug combination work differently across bacterial strains?</h3>
-        <p>
-          Samples of the same bacterial species can respond differently to antibiotics. We asked which
-          drug interactions are shared across samples and which depend on the particular isolate being tested.
-        </p>
-        <p>
-          In collaborative work on <i>Mycobacterium abscessus</i>, I helped map drug interactions and
-          compare responses across isolates. This work identified promising combinations while showing
-          why variation between bacterial samples matters when evaluating a treatment.
-        </p>
-        <div class="keywords" aria-label="Skills used in the Mycobacterium abscessus project">
-          <span class="keyword">Drug interaction analysis</span>
-          <span class="keyword">Comparative data analysis</span>
-          <span class="keyword">Dose-response analysis</span>
+      <article class="project-card" id="abscessus" aria-labelledby="abscessus-question">
+        <div class="project-text">
+          <p class="project-context"><i>Mycobacterium abscessus</i> drug interactions · Aldridge Lab</p>
+          <h3 id="abscessus-question">Why does the same drug combination work differently across bacterial strains?</h3>
+          <p>
+            Samples of the same bacterial species can respond differently to antibiotics. We asked which
+            drug interactions are shared across samples and which depend on the particular isolate being tested.
+          </p>
+          <p>
+            In collaborative work on <i>Mycobacterium abscessus</i>, I helped map drug interactions and
+            compare responses across isolates. This work identified promising combinations while showing
+            why variation between bacterial samples matters when evaluating a treatment.
+          </p>
+          <div class="keywords" aria-label="Skills used in the Mycobacterium abscessus project">
+            <span class="keyword">Drug interaction analysis</span>
+            <span class="keyword">Comparative data analysis</span>
+            <span class="keyword">Dose-response analysis</span>
+          </div>
+          <div class="project-links">
+            <a href="https://doi.org/10.1128/aac.00090-23" class="link">Antimicrobial Agents and Chemotherapy (2023)</a>
+          </div>
         </div>
-        <div class="project-links">
-          <a href="https://doi.org/10.1128/aac.00090-23" class="link">Antimicrobial Agents and Chemotherapy (2023)</a>
-        </div>
+        <figure class="project-sketch">
+          <div class="sketch-frame"><Isolates /></div>
+          <figcaption>The same combination can clear some isolates of a species and miss others.</figcaption>
+        </figure>
       </article>
     </section>
   </div>

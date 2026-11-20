@@ -1,0 +1,59 @@
+---
+// Melanoma cell states drawn as valleys: a cell's AP-1 network reads outside signals (a drug among them)
+// and that reading decides where the cell settles on a spectrum from drug-sensitive to drug-resistant.
+import RoughFilter from './RoughFilter.astro';
+import { arrowhead } from './geometry';
+---
+<svg class="sketch" viewBox="0 0 280 180" role="img" aria-label="Sketch of a cell receiving outside signals, one of them a drug. A network of proteins inside the cell reads the signals, and arrows lead from the cell to three valleys in a landscape, states that range from drug-sensitive to drug-resistant.">
+  <defs>
+    <RoughFilter id="rough-landscape" seed={4} />
+    <linearGradient id="state-spectrum" gradientUnits="userSpaceOnUse" x1="76" y1="0" x2="204" y2="0">
+      <stop offset="0" class="sk-stop-blue" />
+      <stop offset="0.5" class="sk-stop-green" />
+      <stop offset="1" class="sk-stop-warm" />
+    </linearGradient>
+  </defs>
+  <g filter="url(#rough-landscape)">
+    <!-- Outside signals: a drug and other cues, both arriving at the cell. -->
+    <rect class="sk-line sk-fill-paper" x="14" y="24" width="30" height="13" rx="6.5" />
+    <path class="sk-fill-warm-solid" d="M29 24.5 H37.5 A6 6 0 0 1 37.5 36.5 H29 Z" />
+    <path class="sk-line" d="M29 24.5 V36.5" />
+    <circle class="sk-line sk-thin sk-green sk-fill-green" cx="20" cy="83" r="4" />
+    <circle class="sk-line sk-thin sk-green sk-fill-green" cx="31" cy="77" r="4" />
+    <circle class="sk-line sk-thin sk-green sk-fill-green" cx="30" cy="90" r="4" />
+    <path class="sk-line" d="M50 31 C74 31 92 36 111 45" />
+    <path class="sk-line" d={arrowhead(111, 45, 92, 37)} />
+    <path class="sk-line" d="M42 83 C68 83 92 73 111 64" />
+    <path class="sk-line" d={arrowhead(111, 64, 92, 72)} />
+
+    <!-- The cell and the AP-1 network inside it that interprets those signals. -->
+    <circle class="sk-line" cx="140" cy="54" r="27" />
+    <path class="sk-line sk-thin sk-muted" d="M140 41 L128 55 L140 68 L152 55 Z M128 55 L152 55" />
+    <circle class="sk-line sk-thin sk-fill-paper" cx="140" cy="41" r="3.5" />
+    <circle class="sk-line sk-thin sk-fill-paper" cx="128" cy="55" r="3.5" />
+    <circle class="sk-line sk-thin sk-fill-paper" cx="152" cy="55" r="3.5" />
+    <circle class="sk-line sk-thin sk-fill-paper" cx="140" cy="68" r="3.5" />
+
+    <!-- Possible outcomes: states drawn as valleys, on a spectrum from drug-sensitive to drug-resistant. -->
+    <path class="sk-line sk-dash" d="M120 75 C102 96 72 104 56 122" />
+    <path class="sk-line" d={arrowhead(56, 122, 70, 108)} />
+    <path class="sk-line sk-dash" d="M140 84 V121" />
+    <path class="sk-line" d={arrowhead(140, 121, 140, 105)} />
+    <path class="sk-line sk-dash" d="M160 75 C178 96 208 104 224 122" />
+    <path class="sk-line" d={arrowhead(224, 122, 210, 108)} />
+    <path class="sk-line" d="M5 114 C30 114 30 150 50 150 C70 150 76 114 95 114 C114 114 120 150 140 150 C160 150 166 114 185 114 C204 114 210 150 230 150 C250 150 250 114 275 114" />
+    <circle class="sk-line sk-blue sk-fill-blue" cx="50" cy="140" r="9" />
+    <circle class="sk-dot-blue" cx="52" cy="138" r="2.5" />
+    <circle class="sk-line sk-green sk-fill-green" cx="140" cy="140" r="9" />
+    <circle class="sk-dot-green" cx="142" cy="138" r="2.5" />
+    <circle class="sk-line sk-warm sk-fill-warm" cx="230" cy="140" r="9" />
+    <circle class="sk-dot-warm" cx="232" cy="138" r="2.5" />
+    <path class="sk-spectrum" stroke="url(#state-spectrum)" d="M76 167 H204" />
+  </g>
+  <text x="29" y="16" text-anchor="middle" class="sk-label">drug</text>
+  <text x="8" y="63" class="sk-label">other signals</text>
+  <text x="175" y="45" class="sk-label sk-strong">AP-1</text>
+  <text x="175" y="60" class="sk-label">network</text>
+  <text x="68" y="171.5" text-anchor="end" class="sk-label">sensitive</text>
+  <text x="212" y="171.5" class="sk-label sk-strong">resistant</text>
+</svg>
