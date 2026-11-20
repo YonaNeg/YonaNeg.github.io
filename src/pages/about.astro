@@ -11,8 +11,8 @@ import { withBase } from '../utils/paths';
     <section class="bio-section">
       <p class="about-lede">
         I think of myself as a biologist first. The questions that draw me in are biological ones:
-        why a treatment works for one patient but not another, and why a tumor that responds at first
-        can stop responding. Computation is the tool I use to answer them.
+        why two cells with the same DNA can respond differently to the same drug, and why a tumor that
+        responds at first can stop responding. Computation is the tool I use to answer them.
       </p>
       <p>
         Living systems have too many interacting parts to reason about by intuition alone, so I use
@@ -28,34 +28,31 @@ import { withBase } from '../utils/paths';
         works leads to a better way to choose or design a treatment.
       </p>
 
-      <h3>Why do some cancer cells survive treatment that kills their neighbors?</h3>
+      <h3>Can we tell, before treatment, which cells are likely to escape?</h3>
       <p>
-        Tumor cells with the same genome can take on different states, and some of those states
-        tolerate treatment long enough to drive relapse. I want to understand how cells make these
-        decisions, using large single-cell and multi-omic datasets and interpretable machine learning
-        to uncover non-genetic sources of resistance. The patterns that signal a cell is about to
-        escape could explain how resistance begins, and could become biomarkers that identify which
-        patients need a different treatment strategy.
+        If a population of cancer cells already holds a mix of states before treatment, some cells
+        may be closer to escaping than others before the drug ever arrives. I want to find what sets
+        them apart, using large single-cell and multi-omic datasets and interpretable machine learning
+        to uncover non-genetic sources of resistance. The patterns that mark these cells could show
+        how resistance begins.
       </p>
 
-      <h3>Can we simulate a treatment before it reaches patients?</h3>
+      <h3>Can we simulate how cells will respond before running the experiment?</h3>
       <p>
         Longer term, I want to build digital twin models: mechanistic models, calibrated to measured
         data, that simulate how cells respond when conditions change, such as when a drug is added or
         a signal is blocked. Each new measurement would refine the model, and each simulation would
-        suggest the next experiment. Scaled up to virtual patient populations, models like these could
-        help compare drug combinations and doses across the range of patients a therapy will meet in
-        the clinic.
+        suggest the next experiment.
       </p>
     </section>
 
     <section class="bio-section" aria-labelledby="why-heading">
       <h2 id="why-heading">Why it matters</h2>
       <p>
-        What matters in the end is the patient. Treatments often stop working because cells adapt,
-        sometimes without any genetic change. Understanding and simulating those decisions is how I
-        hope to help design therapies that anticipate that adaptation instead of reacting to it, in
-        cancer and other diseases.
+        Treatment choices in cancer often rest on a tumor’s mutations, but cells can stop responding
+        without acquiring new ones. Reading which states cells are in, and simulating how they will
+        shift, could flag which patients need a different strategy, and let us compare drug
+        combinations and doses across virtual patient populations before they reach the clinic.
       </p>
       <p>
         For the projects and methods I’ve worked on so far, see my
@@ -67,7 +64,9 @@ import { withBase } from '../utils/paths';
       <h2 id="beyond-heading">Beyond research</h2>
       <p>
         I enjoy spending time outdoors and cooking, and I speak English and Amharic. I also care about
-        mentoring, community service, and making science accessible beyond the lab.
+        mentoring and service. I’ve guided summer undergraduate researchers from their first training
+        to presenting at the Biomedical Engineering Society annual meeting, and I’ve volunteered in
+        outreach at UVA and with community organizations in the Boston area.
       </p>
     </section>
   </div>
