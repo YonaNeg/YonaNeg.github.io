@@ -3,51 +3,23 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { withBase } from '../utils/paths';
 ---
 
-<BaseLayout title="About - Yonatan N. Degefu" description="Why Yonatan N. Degefu approaches biology through computation, and the questions about treatment resistance, biomarkers, and digital twins that motivate the next stage of the work.">
+<BaseLayout title="About - Yonatan N. Degefu" description="How Yonatan N. Degefu moved from biology to quantitative research on how cells change state, and why it matters.">
   <div class="about-container">
     <p class="eyebrow page-kicker">What motivates me</p>
     <h1>About Me</h1>
 
     <section class="bio-section">
       <p class="about-lede">
-        Living systems have too many interacting parts to reason about by intuition alone, so I use
-        models and data to make ideas precise enough to test. I pay closest attention when a model
-        and an experiment disagree, because that’s often where there is something new to learn.
+        I trained primarily as a biologist, and along the way I was drawn to using math and data to
+        test biological hypotheses. My research began with how plants defend themselves against
+        mites, then moved to regulatory T cells, where I built my first image-analysis pipelines, then
+        to drug combinations for tuberculosis, and now to cancer.
       </p>
-    </section>
-
-    <section class="bio-section" aria-labelledby="future-heading">
-      <h2 id="future-heading">Questions I want to pursue next</h2>
       <p>
-        I’m drawn to problems that span discovery and translation, where understanding how a disease
-        works leads to a better way to choose or design a treatment.
-      </p>
-
-      <h3>Can we tell, before treatment, which cells are likely to escape?</h3>
-      <p>
-        If a population of cancer cells already holds a mix of states before treatment, some cells
-        may be closer to escaping than others before the drug ever arrives. I want to find what sets
-        them apart, using large single-cell and multi-omic datasets and interpretable machine learning
-        to uncover non-genetic sources of resistance. The patterns that mark these cells could show
-        how resistance begins.
-      </p>
-
-      <h3>Can we simulate how cells will respond before running the experiment?</h3>
-      <p>
-        Longer term, I want to build digital twin models: mechanistic models, calibrated to measured
-        data, that simulate how cells respond when conditions change, such as when a drug is added or
-        a signal is blocked. Each new measurement would refine the model, and each simulation would
-        suggest the next experiment.
-      </p>
-    </section>
-
-    <section class="bio-section" aria-labelledby="why-heading">
-      <h2 id="why-heading">Why it matters</h2>
-      <p>
-        Treatment choices in cancer often rest on a tumor’s mutations, but cells can stop responding
-        without acquiring new ones. Reading which states cells are in, and simulating how they will
-        shift, could flag which patients need a different strategy, and let us compare drug
-        combinations and doses across virtual patient populations before they reach the clinic.
+        Living systems have too many interacting parts to reason about by intuition alone. I build
+        models to check whether a proposed mechanism can explain what we measure, and to predict what
+        should happen in experiments we haven’t run yet. I pay closest attention when a model and an
+        experiment disagree, because that’s often where there is something new to learn.
       </p>
       <p>
         For the projects and methods I’ve worked on so far, see
