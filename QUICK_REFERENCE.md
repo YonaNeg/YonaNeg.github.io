@@ -1,8 +1,8 @@
 # Website quick reference
 
-- **GitHub Pages:** https://yonaneg.github.io/academic-website/
-- **Repository:** https://github.com/YonaNeg/academic-website
-- **Deployments:** https://github.com/YonaNeg/academic-website/actions
+- **GitHub Pages:** https://yonaneg.github.io/
+- **Repository:** https://github.com/YonaNeg/YonaNeg.github.io
+- **Deployments:** https://github.com/YonaNeg/YonaNeg.github.io/actions
 - **One-time setting:** Repository Settings → Pages → Source → GitHub Actions
 - **Local:** http://127.0.0.1:4321 while the local server is running
 

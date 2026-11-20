@@ -1,8 +1,8 @@
 # Academic website maintenance guide
 
-**GitHub Pages:** https://yonaneg.github.io/academic-website/
-**Repository:** https://github.com/YonaNeg/academic-website
-**Deployments:** https://github.com/YonaNeg/academic-website/actions
+**GitHub Pages:** https://yonaneg.github.io/
+**Repository:** https://github.com/YonaNeg/YonaNeg.github.io
+**Deployments:** https://github.com/YonaNeg/YonaNeg.github.io/actions
 
 ## Access the website
 
@@ -46,6 +46,8 @@ src/
     research.astro           Research questions, each with a sketch
     publications.astro       Papers, preprints, methods
     cv.astro                 Education and CV download
+    sitemap.xml.ts           Sitemap for search engines, built from the pages above
+    robots.txt.ts            Crawler rules that point search engines to the sitemap
   components/PublicationEntry.astro  Shared publication layout
   components/sketches/       Inline SVG research sketches, colored by the theme
   data/publications.ts       Publication records and homepage selections
@@ -115,7 +117,9 @@ git push
 
 The GitHub Pages workflow builds pushes to `main` with Node 24, installs exact dependencies without lifecycle scripts, and uploads only `dist/`. Its official actions are pinned to full commit hashes. Enable the repository’s Pages source as GitHub Actions once.
 
-`GITHUB_PAGES=true` selects the Pages URL and the repository path automatically. The path helper keeps navigation, figures, and the CV under `/academic-website/`. If the repository is named `YonaNeg.github.io`, the Pages build uses the root domain instead. Normal local and optional Vercel builds retain root paths.
+`GITHUB_PAGES=true` selects the Pages URL and the repository path automatically. Because the repository is named `YonaNeg.github.io`, the site is served from the root domain. Under any other repository name, the path helper would keep navigation, figures, and the CV under `/<repository>/`. Local builds use root paths.
+
+The site first launched at `/academic-website/`. When built for the root domain, `astro.config.mjs` adds small forwarding pages so those old addresses lead to the matching pages. New pages appear in the sitemap automatically.
 
 The deployment must complete before the live website changes. Check the workflow logs in the GitHub Actions tab if a build fails.
 

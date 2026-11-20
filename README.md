@@ -2,7 +2,7 @@
 
 Research, publications, and education in computational biology and systems pharmacology.
 
-[Website](https://yonaneg.github.io/academic-website/)
+[Website](https://yonaneg.github.io/)
 
 ## Local preview
 
