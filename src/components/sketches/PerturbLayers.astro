@@ -1,0 +1,50 @@
+---
+// Ongoing AP-1 work, kept general: perturb AP-1 factors, measure several molecular layers, predict how cell state changes.
+import RoughFilter from './RoughFilter.astro';
+import { arrowhead } from './geometry';
+---
+<svg class="sketch" viewBox="0 0 280 180" role="img" aria-label="Sketch in three steps. Perturb: a factor in a cell's AP-1 network is changed. Measure: protein, chromatin and RNA are recorded. Predict: a model uses those measurements to predict how the cell's state changes.">
+  <defs><RoughFilter id="rough-layers" seed={7} /></defs>
+  <g filter="url(#rough-layers)">
+    <!-- Perturb: a cell's AP-1 network with one factor changed. -->
+    <circle class="sk-line" cx="40" cy="92" r="27" />
+    <path class="sk-line sk-thin sk-muted" d="M40 79 L28 93 L40 106 L52 93 Z M28 93 L52 93" />
+    <circle class="sk-line sk-thin sk-fill-paper" cx="40" cy="79" r="3.5" />
+    <circle class="sk-line sk-thin sk-fill-paper" cx="28" cy="93" r="3.5" />
+    <circle class="sk-line sk-thin sk-fill-paper" cx="40" cy="106" r="3.5" />
+    <circle class="sk-line sk-thin sk-warm sk-fill-warm-solid" cx="52" cy="93" r="5" />
+    <path class="sk-line" d="M72 93 H101" />
+    <path class="sk-line" d={arrowhead(101, 93, 91, 93)} />
+
+    <!-- Measure: protein (bars), chromatin (an open region between nucleosomes), RNA (a transcript). -->
+    <path class="sk-line sk-thin sk-muted" d="M112 48 H164" />
+    <rect class="sk-line sk-thin sk-blue sk-fill-blue" x="119" y="38" width="8" height="10" rx="1.5" />
+    <rect class="sk-line sk-thin sk-blue sk-fill-blue" x="133" y="31" width="8" height="17" rx="1.5" />
+    <rect class="sk-line sk-thin sk-blue sk-fill-blue" x="147" y="41" width="8" height="7" rx="1.5" />
+    <path class="sk-line sk-thin sk-muted" d="M112 94 H170" />
+    <circle class="sk-line sk-thin sk-fill-paper" cx="117" cy="94" r="4" />
+    <circle class="sk-line sk-thin sk-fill-paper" cx="127" cy="94" r="4" />
+    <path class="sk-line sk-green sk-fill-green" d="M133 94 C138 94 137 81 140 81 C143 81 142 94 147 94 Z" />
+    <circle class="sk-line sk-thin sk-fill-paper" cx="153" cy="94" r="4" />
+    <circle class="sk-line sk-thin sk-fill-paper" cx="163" cy="94" r="4" />
+    <path class="sk-line sk-warm" d="M115 134 q5 -9 10 0 t10 0 t10 0 t10 0 t10 0" />
+
+    <!-- Predict: the cell's new state. -->
+    <path class="sk-line sk-dash" d="M178 93 H200" />
+    <path class="sk-line" d={arrowhead(200, 93, 190, 93)} />
+    <path class="sk-line" d="M206 92 C214 92 214 108 222 108 C230 108 230 92 237 92 C244 92 244 108 252 108 C260 108 260 92 268 92" />
+    <circle class="sk-line sk-thin sk-blue sk-dash" cx="222" cy="101" r="6" />
+    <circle class="sk-line sk-warm sk-fill-warm" cx="252" cy="101" r="6" />
+    <path class="sk-line sk-thin sk-dash" d="M226 92 C230 80 244 80 248 91" />
+    <path class="sk-line sk-thin" d={arrowhead(248, 91, 245, 82, 6)} />
+  </g>
+  <text x="40" y="20" text-anchor="middle" class="sk-label sk-strong">perturb</text>
+  <text x="138" y="20" text-anchor="middle" class="sk-label sk-strong">measure</text>
+  <text x="238" y="20" text-anchor="middle" class="sk-label sk-strong">predict</text>
+  <text x="40" y="154" text-anchor="middle" class="sk-label sk-small">AP-1 factor</text>
+  <text x="138" y="62" text-anchor="middle" class="sk-label sk-small">protein</text>
+  <text x="140" y="112" text-anchor="middle" class="sk-label sk-small">chromatin</text>
+  <text x="140" y="154" text-anchor="middle" class="sk-label sk-small">RNA</text>
+  <text x="189" y="85" text-anchor="middle" class="sk-label sk-small">model</text>
+  <text x="237" y="154" text-anchor="middle" class="sk-label sk-small">cell state</text>
+</svg>

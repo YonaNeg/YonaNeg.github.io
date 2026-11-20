@@ -4,6 +4,7 @@ import StateLandscape from '../components/sketches/StateLandscape.astro';
 import DoseResponse from '../components/sketches/DoseResponse.astro';
 import DecisionTree from '../components/sketches/DecisionTree.astro';
 import Isolates from '../components/sketches/Isolates.astro';
+import PerturbLayers from '../components/sketches/PerturbLayers.astro';
 ---
 
 <BaseLayout title="Research - Yonatan N. Degefu" description="The questions behind Yonatan N. Degefu's research on melanoma cell states, drug combinations, and treatment response, and the approaches used to investigate them.">
@@ -62,6 +63,29 @@ import Isolates from '../components/sketches/Isolates.astro';
         </figure>
       </article>
 
+      <article class="project-card" id="ap1-perturbation" aria-labelledby="ap1-perturbation-question">
+        <div class="project-text">
+          <p class="project-context">Ongoing work · Fallahi-Sichani Lab</p>
+          <h3 id="ap1-perturbation-question">Which AP-1 factors control a cell’s state, and what happens when we change them?</h3>
+          <p>
+            Building on the AP-1 model, we perturb AP-1 factors in melanoma cells and measure the
+            response across molecular layers, from protein to chromatin to gene expression. I’m
+            building statistical learning models that connect these layers to predict how cell states
+            change.
+          </p>
+          <div class="keywords" aria-label="Skills used in the ongoing AP-1 perturbation project">
+            <span class="keyword">Multi-omic integration</span>
+            <span class="keyword">Multiplexed imaging</span>
+            <span class="keyword">Single-nucleus multiome</span>
+            <span class="keyword">Statistical learning</span>
+          </div>
+        </div>
+        <figure class="project-sketch">
+          <div class="sketch-frame"><PerturbLayers /></div>
+          <figcaption>Perturb AP-1 factors, measure the response across molecular layers, and learn to predict how cell states change.</figcaption>
+        </figure>
+      </article>
+
       <article class="project-card" id="drug-combinations" aria-labelledby="dna-damage-question">
         <div class="project-text">
           <p class="project-context">DNA damage response · AstraZeneca</p>
@@ -106,7 +130,9 @@ import Isolates from '../components/sketches/Isolates.astro';
             We combined efficient drug-interaction measurements with machine learning to interpret
             high-dimensional data. I worked on automated analysis pipelines and models that linked
             laboratory measurements to treatment outcomes in mouse studies. We also asked whether
-            measurements of drug pairs could guide the design of larger combinations.
+            measurements of drug pairs could guide the design of larger combinations. We derived the
+            rules from the same features the models use to make predictions, so each prediction can be
+            traced back to the measurements behind it instead of staying a black box.
           </p>
           <p class="project-insight">
             These studies identified interpretable rules for assembling combinations and helped
@@ -128,7 +154,7 @@ import Isolates from '../components/sketches/Isolates.astro';
         </div>
         <figure class="project-sketch">
           <div class="sketch-frame"><DecisionTree /></div>
-          <figcaption>Interpretable models read like rules: which measurements predict that a treatment will work, so the best candidates are tested first.</figcaption>
+          <figcaption>A model’s predictions broken down into rules for building a combination. One rule: include a pair that is synergistic and a pair that is potent, each in the right growth condition.</figcaption>
         </figure>
       </article>
 
