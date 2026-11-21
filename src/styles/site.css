@@ -167,7 +167,6 @@ main { padding-block: 3rem 4.5rem; min-height: 70vh; }
 .intro { color: var(--muted); font-size: 1.0625rem; max-width: 75ch; margin-bottom: 2rem; }
 .bio-section { margin-block: 2rem; max-width: 75ch; }
 .bio-section p + p { margin-top: 1rem; }
-.about-lede { font-size: 1.15rem; line-height: 1.6; color: var(--ink); }
 .bio-section h3 { margin: 1.75rem 0 .45rem; }
 .education, .experience, .research-areas, .projects, .publications-section, .stats { margin-top: 2.5rem; }
 .timeline-item, .experience-item, .area, .project-card, .publication, .cv-item, .cv-pub { padding-block: 1.4rem; border-top: 1px solid var(--line); }

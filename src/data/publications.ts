@@ -47,7 +47,7 @@ export const publications: Publication[] = [
     year: 2023,
     citation: '67(7):e00090-23',
     kind: 'journal',
-    summary: 'Systematic measurements reveal drug synergies and isolate-specific drug responses in M. abscessus.',
+    summary: 'Systematic measurements reveal drug synergies and isolate-specific drug interactions in M. abscessus.',
     links: [
       { label: 'Paper', href: 'https://doi.org/10.1128/aac.00090-23' },
       { label: 'PubMed', href: 'https://pubmed.ncbi.nlm.nih.gov/37278639/' },
@@ -63,7 +63,7 @@ export const publications: Publication[] = [
     citation: '3(9):100737',
     kind: 'journal',
     selected: true,
-    summary: 'Pairwise drug response measurements guide the assembly of effective multidrug tuberculosis treatments.',
+    summary: 'Pairwise drug response measurements can guide the assembly of effective multidrug tuberculosis treatments.',
     highlight: {
       note: 'Highlighted in an accompanying Preview by Patterson & Palmer:',
       title: 'Predicting in vivo activity of combination therapies from in vitro drug pairs in diverse environments',

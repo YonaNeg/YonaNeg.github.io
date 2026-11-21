@@ -1,10 +1,10 @@
 ---
-// Melanoma cell states drawn as valleys: a cell's gene regulatory network (AP-1 in this project) reads outside signals (a drug among them)
-// and that reading decides where the cell settles on a spectrum from drug-sensitive to drug-resistant.
+// Melanoma cell states drawn as valleys: a cell interprets some outside signals (a drug among them) through its gene
+// regulatory network (AP-1 in this project), which helps determine where it settles between drug-sensitive and drug-tolerant.
 import RoughFilter from './RoughFilter.astro';
 import { arrowhead } from './geometry';
 ---
-<svg class="sketch" viewBox="0 0 280 180" role="img" aria-label="Sketch of a cell receiving outside signals, one of them a drug. A gene regulatory network inside the cell reads the signals, and arrows lead from the cell to three valleys in a landscape, states that range from drug-sensitive to drug-resistant.">
+<svg class="sketch" viewBox="0 0 280 180" role="img" aria-label="Sketch of a cell receiving outside signals, one of them a drug. The cell interprets them through a gene regulatory network, and arrows lead from the cell to three valleys in a landscape, states that range from drug-sensitive to drug-tolerant.">
   <defs>
     <RoughFilter id="rough-landscape" seed={4} />
     <linearGradient id="state-spectrum" gradientUnits="userSpaceOnUse" x1="76" y1="0" x2="204" y2="0">
@@ -26,7 +26,7 @@ import { arrowhead } from './geometry';
     <path class="sk-line" d="M42 83 C68 83 92 73 111 64" />
     <path class="sk-line" d={arrowhead(111, 64, 92, 72)} />
 
-    <!-- The cell and the gene regulatory network inside it that interprets those signals. -->
+    <!-- The cell and the gene regulatory network through which it interprets those signals. -->
     <circle class="sk-line" cx="140" cy="54" r="27" />
     <path class="sk-line sk-thin sk-muted" d="M140 41 L128 55 L140 68 L152 55 Z M128 55 L152 55" />
     <circle class="sk-line sk-thin sk-fill-paper" cx="140" cy="41" r="3.5" />
@@ -34,7 +34,7 @@ import { arrowhead } from './geometry';
     <circle class="sk-line sk-thin sk-fill-paper" cx="152" cy="55" r="3.5" />
     <circle class="sk-line sk-thin sk-fill-paper" cx="140" cy="68" r="3.5" />
 
-    <!-- Possible outcomes: states drawn as valleys, on a spectrum from drug-sensitive to drug-resistant. -->
+    <!-- Possible outcomes: states drawn as valleys, on a spectrum from drug-sensitive to drug-tolerant. -->
     <path class="sk-line sk-dash" d="M120 75 C102 96 72 104 56 122" />
     <path class="sk-line" d={arrowhead(56, 122, 70, 108)} />
     <path class="sk-line sk-dash" d="M140 84 V121" />
@@ -56,5 +56,5 @@ import { arrowhead } from './geometry';
   <text x="174" y="54" class="sk-label">regulatory</text>
   <text x="174" y="69" class="sk-label">network</text>
   <text x="68" y="171.5" text-anchor="end" class="sk-label">sensitive</text>
-  <text x="212" y="171.5" class="sk-label sk-strong">resistant</text>
+  <text x="212" y="171.5" class="sk-label sk-strong">tolerant</text>
 </svg>

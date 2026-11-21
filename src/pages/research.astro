@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import StateLandscape from '../components/sketches/StateLandscape.astro';
-import DoseResponse from '../components/sketches/DoseResponse.astro';
+import Isobologram from '../components/sketches/Isobologram.astro';
 import DecisionTree from '../components/sketches/DecisionTree.astro';
 import Isolates from '../components/sketches/Isolates.astro';
 import PerturbLayers from '../components/sketches/PerturbLayers.astro';
@@ -14,33 +14,31 @@ import PerturbLayers from '../components/sketches/PerturbLayers.astro';
 
     <section class="research-overview">
       <p class="intro">
-        One idea runs through these projects: how a biological system responds to treatment depends
-        on how its parts work together. Those parts might be proteins in a regulatory network,
-        pathways inside a cell, or drugs in a combination, and a change in one can ripple through
-        the others. Understanding those interactions helps explain why a treatment works, predict
+        How a biological system responds to treatment depends on interactions: among proteins in a
+        regulatory network, between pathways inside a cell, and between drugs in a combination. A
+        change in one can ripple through the others. Understanding those interactions helps explain why a treatment works, predict
         when it will fail, and decide which options to test next. Below are the questions that
         motivated each project, the challenges they posed, and how I approached them.
       </p>
     </section>
 
     <section class="projects" aria-labelledby="research-questions">
-      <h2 id="research-questions">Questions I investigate</h2>
+      <h2 id="research-questions">Questions I work on</h2>
 
       <article class="project-card" id="melanoma" aria-labelledby="melanoma-question">
         <div class="project-text">
           <p class="project-context">Cancer cell plasticity · Fallahi-Sichani Lab</p>
           <h3 id="melanoma-question">How does a cancer cell’s starting state shape its response to drugs and other signals?</h3>
           <p>
-            Cancer cells with the same DNA can exist in different states and switch between them.
-            Because of this plasticity, a population of cancer cells already holds a mix of states
-            before treatment begins, and that mix shapes how it responds to a drug or any other outside
-            signal. Using melanoma as a model, I want to decode how these states arise and what makes
+            Cancer cells with the same genome can exist in different states (heterogeneity) and switch
+            between them (plasticity). A population therefore holds a mix of states before treatment
+            begins, and that mix shapes how it responds to a drug or other outside signals. Using melanoma as a model, I want to decode how these states arise and what makes
             a cell move from one to another.
           </p>
           <p>
-            I study AP-1, a group of proteins that helps control gene activity, by building mathematical
-            models of how its components interact. I compare the models with measurements of individual
-            melanoma cells and work with experimental collaborators to test predictions about how
+            I study AP-1, a family of transcription factors that regulate gene expression, by building
+            mathematical models of how its members interact. I calibrate the models to single-cell
+            measurements in melanoma and work with experimental collaborators to test predictions about how
             changes in the network shift cell states.
           </p>
           <p class="project-insight">
@@ -59,7 +57,7 @@ import PerturbLayers from '../components/sketches/PerturbLayers.astro';
         </div>
         <figure class="project-sketch">
           <div class="sketch-frame"><StateLandscape /></div>
-          <figcaption>A cell reads signals from its surroundings, a drug among them, through a gene regulatory network. How that network interprets them shapes which state the cell settles into.</figcaption>
+          <figcaption>Cells interpret some signals from their surroundings through gene regulatory networks, which help determine the state a cell settles into.</figcaption>
         </figure>
       </article>
 
@@ -92,11 +90,10 @@ import PerturbLayers from '../components/sketches/PerturbLayers.astro';
           <h3 id="dna-damage-question">How can we choose which cancer drugs to combine?</h3>
           <p>
             Knowing how a drug works on its own is only part of the problem. To understand a combination,
-            we also need to understand how the pathways it targets interact.
+            we also need to understand how the pathways the drugs target interact.
           </p>
           <p>
-            During my AstraZeneca internship, I developed a model of DNA damage response pathways in
-            MATLAB SimBiology. I used simulated experiments to explore drug interactions and dosing
+            I developed a model of DNA damage response pathways in MATLAB SimBiology. I used simulated experiments to explore drug interactions and dosing
             strategies, connecting proposed biological mechanisms with predicted treatment responses.
           </p>
           <p class="project-insight">
@@ -111,8 +108,8 @@ import PerturbLayers from '../components/sketches/PerturbLayers.astro';
           </div>
         </div>
         <figure class="project-sketch">
-          <div class="sketch-frame"><DoseResponse /></div>
-          <figcaption>When drugs act in synergy, the combination reaches the same effect at lower doses. Simulations can suggest where and why.</figcaption>
+          <div class="sketch-frame"><Isobologram /></div>
+          <figcaption>Each drug’s EC50 alone marks its potency. If the drugs are additive, dose pairs that give the same 50% effect fall on the straight line between those points; a synergistic combination bows toward the origin, reaching that effect at lower doses of both.</figcaption>
         </figure>
       </article>
 
@@ -121,17 +118,17 @@ import PerturbLayers from '../components/sketches/PerturbLayers.astro';
           <p class="project-context">Tuberculosis drug combinations · Aldridge Lab</p>
           <h3 id="tb-question">How can we find better drug combinations without testing them all?</h3>
           <p>
-            This work was motivated by the need to improve long-standing tuberculosis treatments as
-            bacteria developed resistance. The number of possible drug combinations made testing every
+            Tuberculosis treatment takes months of multidrug therapy, and drug-resistant strains make it
+            harder still. The number of possible drug combinations made testing every
             option impractical. We needed creative ways to measure combinations efficiently and make
             sense of many different drug responses at once.
           </p>
           <p>
             We combined efficient drug-interaction measurements with machine learning to interpret
             high-dimensional data. I worked on automated pipelines that fit dose-response curves to
-            quantify potency and drug interactions, and on models that used these measures to link
-            laboratory measurements to treatment outcomes in mouse studies. We also asked whether
-            measurements of drug pairs could guide the design of larger combinations. We derived the
+            quantify potency and drug interactions, and on models that used these metrics to predict
+            treatment outcomes reported in animal and clinical studies. We also asked whether
+            measurements of drug pairs could guide the design of larger combinations. We derived design
             rules from the same features the models use to make predictions, so each prediction can be
             traced back to the measurements behind it instead of staying a black box.
           </p>
@@ -156,22 +153,22 @@ import PerturbLayers from '../components/sketches/PerturbLayers.astro';
         </div>
         <figure class="project-sketch">
           <div class="sketch-frame"><DecisionTree /></div>
-          <figcaption>A model’s predictions broken down into rules for building a combination. One rule: include a pair that is synergistic and a pair that is potent, each in the right growth condition.</figcaption>
+          <figcaption>A model’s predictions broken down into rules for building a combination. One rule: include a pair that is synergistic and a pair that is potent, each in a specific growth condition.</figcaption>
         </figure>
       </article>
 
       <article class="project-card" id="abscessus" aria-labelledby="abscessus-question">
         <div class="project-text">
           <p class="project-context"><i>Mycobacterium abscessus</i> drug interactions · Aldridge Lab</p>
-          <h3 id="abscessus-question">Why does the same drug combination work differently across bacterial strains?</h3>
+          <h3 id="abscessus-question">Why does the same drug combination work differently across isolates of one species?</h3>
           <p>
-            Samples of the same bacterial species can respond differently to antibiotics. We asked which
-            drug interactions are shared across samples and which depend on the particular isolate being tested.
+            Isolates of the same bacterial species can respond differently to antibiotics. We asked which
+            drug interactions are shared across isolates and which depend on the particular isolate being tested.
           </p>
           <p>
             In collaborative work on <i>Mycobacterium abscessus</i>, I helped map drug interactions and
             compare responses across isolates. This work identified promising combinations while showing
-            why variation between bacterial samples matters when evaluating a treatment.
+            why variation between isolates matters when evaluating a treatment.
           </p>
           <div class="keywords" aria-label="Skills used in the Mycobacterium abscessus project">
             <span class="keyword">Drug interaction analysis</span>
@@ -184,7 +181,7 @@ import PerturbLayers from '../components/sketches/PerturbLayers.astro';
         </div>
         <figure class="project-sketch">
           <div class="sketch-frame"><Isolates /></div>
-          <figcaption>The same combination can clear some isolates of a species and miss others.</figcaption>
+          <figcaption>The same combination can be synergistic against some isolates of a species but not others.</figcaption>
         </figure>
       </article>
     </section>

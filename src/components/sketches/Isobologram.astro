@@ -1,0 +1,26 @@
+---
+// Isobologram: each drug's EC50 alone marks its potency; the straight line between them is the
+// additive (Loewe) expectation; a curve bowed toward the origin is synergy.
+import RoughFilter from './RoughFilter.astro';
+import { arrowhead } from './geometry';
+---
+<svg class="sketch" viewBox="0 0 280 180" role="img" aria-label="Isobologram sketch. The axes show the doses of drug A and drug B. A dot on each axis marks that drug's EC50 alone, its potency. A dashed straight line between the dots shows the dose pairs expected to give the same effect if the drugs are additive. A solid curve bowed toward the origin, labeled synergy, shows a combination that reaches that effect at lower doses of both drugs.">
+  <defs><RoughFilter id="rough-isobologram" seed={7} /></defs>
+  <g filter="url(#rough-isobologram)">
+    <path class="sk-line sk-muted" d="M52 18 V150 H262" />
+    <path class="sk-line sk-muted" d={arrowhead(52, 14, 52, 30, 6)} />
+    <path class="sk-line sk-muted" d={arrowhead(266, 150, 250, 150, 6)} />
+    <path class="sk-line sk-muted sk-dash" d="M52 38 L238 150" />
+    <path class="sk-line sk-blue sk-thick" d="M52 38 C66 96 120 136 238 150" />
+    <path class="sk-line sk-warm" d="M144 93 L122 114" />
+    <path class="sk-line sk-warm" d={arrowhead(121, 115, 144, 93, 7)} />
+    <circle class="sk-line sk-fill-paper" cx="52" cy="38" r="4.5" />
+    <circle class="sk-line sk-fill-paper" cx="238" cy="150" r="4.5" />
+  </g>
+  <text x="62" y="33" class="sk-label sk-small">EC50, B alone</text>
+  <text x="238" y="168" text-anchor="middle" class="sk-label sk-small">EC50, A alone</text>
+  <text x="150" y="80" class="sk-label sk-small">additive (expected)</text>
+  <text x="62" y="138" class="sk-label sk-strong">synergy</text>
+  <text x="136" y="168" text-anchor="middle" class="sk-label">dose A</text>
+  <text x="26" y="94" text-anchor="middle" class="sk-label" transform="rotate(-90 26 94)">dose B</text>
+</svg>
