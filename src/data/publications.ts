@@ -65,7 +65,7 @@ export const publications: Publication[] = [
     selected: true,
     summary: 'Pairwise drug response measurements can guide the assembly of effective multidrug tuberculosis treatments.',
     highlight: {
-      note: 'Highlighted in an accompanying Preview by Patterson & Palmer:',
+      note: 'Highlighted in an accompanying Preview:',
       title: 'Predicting in vivo activity of combination therapies from in vitro drug pairs in diverse environments',
       href: 'https://doi.org/10.1016/j.xcrm.2022.100745',
     },
