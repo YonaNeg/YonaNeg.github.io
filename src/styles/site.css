@@ -1,52 +1,38 @@
 /* A reading-focused academic profile, with shared mobile and print styles.
-   The theme follows the visitor's system setting; the CSP allows no script for a manual toggle. */
+   Each color is light-dark(light value, dark value). The theme follows the visitor's system
+   setting until they flip the header switch; public/theme.js then sets data-theme on <html>. */
 :root {
   color-scheme: light dark;
-  --bg: #ffffff;
-  --surface: #f5f7fa;
-  --ink: #202b37;
-  --muted: #536170;
-  --accent: #184d83;
-  --accent-strong: #10365d;
-  --on-accent: #ffffff;
-  --line: #dce2e8;
-  --selection-ink: #163b61;
-  --selection-bg: #deebf7;
+  --bg: light-dark(#ffffff, #10161d);
+  --surface: light-dark(#f5f7fa, #18212b);
+  --ink: light-dark(#202b37, #e4e9ef);
+  --muted: light-dark(#536170, #a3b1bf);
+  --accent: light-dark(#184d83, #8bbcf0);
+  --accent-strong: light-dark(#10365d, #b8d6f7);
+  --on-accent: light-dark(#ffffff, #0d1a28);
+  --line: light-dark(#dce2e8, #2b3744);
+  --selection-ink: light-dark(#163b61, #f1f5f9);
+  --selection-bg: light-dark(#deebf7, #2a4a6b);
   /* Sketch colors: strokes, then soft fills. */
-  --sketch-blue: #2f6db0;
-  --sketch-warm: #c2621a;
-  --sketch-green: #2e7d55;
-  --sketch-blue-soft: #dce9f7;
-  --sketch-warm-soft: #f9e3cf;
-  --sketch-green-soft: #d8eee1;
+  --sketch-blue: light-dark(#2f6db0, #7fb3ec);
+  --sketch-warm: light-dark(#c2621a, #f0a35e);
+  --sketch-green: light-dark(#2e7d55, #6fcf97);
+  --sketch-blue-soft: light-dark(#dce9f7, #1e3550);
+  --sketch-warm-soft: light-dark(#f9e3cf, #46301c);
+  --sketch-green-soft: light-dark(#d8eee1, #1c3a2b);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
   background: var(--bg);
   color: var(--ink);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
 }
+:root[data-theme='light'] { color-scheme: light; }
+:root[data-theme='dark'] { color-scheme: dark; }
+/* Graphical abstracts are white-background journal figures; soften them slightly in dark mode. */
 @media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #10161d;
-    --surface: #18212b;
-    --ink: #e4e9ef;
-    --muted: #a3b1bf;
-    --accent: #8bbcf0;
-    --accent-strong: #b8d6f7;
-    --on-accent: #0d1a28;
-    --line: #2b3744;
-    --selection-ink: #f1f5f9;
-    --selection-bg: #2a4a6b;
-    --sketch-blue: #7fb3ec;
-    --sketch-warm: #f0a35e;
-    --sketch-green: #6fcf97;
-    --sketch-blue-soft: #1e3550;
-    --sketch-warm-soft: #46301c;
-    --sketch-green-soft: #1c3a2b;
-  }
-  /* Graphical abstracts are white-background journal figures; soften them slightly. */
-  .publication-figure img { filter: brightness(.9); }
+  :root:not([data-theme]) .publication-figure img { filter: brightness(.9); }
 }
+:root[data-theme='dark'] .publication-figure img { filter: brightness(.9); }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { font-size: 1.0625rem; line-height: 1.7; }
 a { color: var(--accent); text-underline-offset: .2em; text-decoration-thickness: 1px; }
@@ -62,12 +48,26 @@ p { text-wrap: pretty; }
 .skip-link:focus { top: 1rem; }
 .site-header { border-bottom: 1px solid var(--line); }
 .nav-container, main, .site-footer { max-width: 960px; padding-inline: 2rem; margin-inline: auto; }
-.nav-container { min-height: 86px; display: flex; justify-content: space-between; align-items: center; gap: 2rem; }
-.logo { color: var(--ink); text-decoration: none; font-size: 1rem; font-weight: 650; white-space: nowrap; }
+.nav-container { min-height: 86px; display: flex; align-items: center; gap: 2rem; }
+.logo { color: var(--ink); text-decoration: none; font-size: 1rem; font-weight: 650; white-space: nowrap; margin-right: auto; }
 .nav-links { display: flex; list-style: none; gap: 1.4rem; flex-wrap: wrap; }
 .nav-links a { display: inline-block; font-size: .875rem; color: var(--muted); text-decoration: none; padding-block: .55rem; }
 .nav-links a:hover { color: var(--accent); text-decoration: underline; }
 .nav-links a[aria-current='page'] { color: var(--accent); font-weight: 650; border-bottom: 2px solid var(--accent); }
+
+/* Theme switch in the header: the knob carries a sun (light) or moon (dark). Hidden until theme.js runs. */
+.theme-toggle { flex: none; position: relative; width: 2.5rem; height: 1.375rem; padding: 0; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); cursor: pointer; }
+.theme-toggle[hidden] { display: none; }
+.theme-toggle:hover { border-color: var(--accent); }
+.theme-toggle:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+.theme-toggle-knob { position: absolute; top: 1px; left: 1px; display: grid; place-items: center; width: 1.125rem; height: 1.125rem; border-radius: 50%; background: var(--bg); box-shadow: 0 1px 2px rgb(0 0 0 / .25); transition: translate .2s ease; }
+.theme-icon { grid-area: 1 / 1; width: .75rem; height: .75rem; fill: none; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.theme-icon-sun { stroke: var(--sketch-warm); }
+.theme-icon-moon { stroke: var(--sketch-blue); fill: var(--sketch-blue); visibility: hidden; }
+:root[data-theme='dark'] .theme-toggle-knob { translate: 1.125rem 0; }
+:root[data-theme='dark'] .theme-icon-sun { visibility: hidden; }
+:root[data-theme='dark'] .theme-icon-moon { visibility: visible; }
+@media (prefers-reduced-motion: reduce) { .theme-toggle-knob { transition: none; } }
 main { padding-block: 3rem 4.5rem; min-height: 70vh; }
 .site-footer { border-top: 1px solid var(--line); padding-block: 1.8rem; display: flex; justify-content: space-between; gap: 2rem; font-size: .8rem; }
 .footer-name { color: var(--ink); text-decoration: none; font-weight: 600; }
@@ -218,7 +218,9 @@ main { padding-block: 3rem 4.5rem; min-height: 70vh; }
   .question-card .sketch-frame { max-width: 340px; }
   .project-card { grid-template-columns: minmax(0, 1fr); }
   .project-sketch { order: -1; max-width: 340px; margin: 0 0 1.2rem; }
-  .nav-container { flex-direction: column; align-items: flex-start; justify-content: center; gap: .6rem; padding-block: 1rem; }
+  .nav-container { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-content: center; gap: .6rem 1rem; padding-block: 1rem; }
+  .nav-links { grid-row: 2; grid-column: 1 / -1; }
+  .theme-toggle { grid-row: 1; grid-column: 2; }
   .nav-links { gap: 1.3rem; }
   main { padding-top: 2rem; }
 }
@@ -244,6 +246,7 @@ main { padding-block: 3rem 4.5rem; min-height: 70vh; }
   .footer-contact { text-align: left; }
 }
 @media print {
+  :root, :root[data-theme] { color-scheme: light; }
   :root { --bg: #fff; --ink: #111; --muted: #333; --accent: #222; --line: #ccc; --surface: #fff; }
   body { font-size: 11pt; }
   .site-header, .site-footer, .download-btn, .skip-link { display: none; }

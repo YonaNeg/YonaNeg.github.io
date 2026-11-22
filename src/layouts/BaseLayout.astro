@@ -5,7 +5,7 @@ interface Props { title: string; description?: string; }
 const { title, description = 'Yonatan N. Degefu, PhD candidate in Biomedical Engineering at the University of Virginia, combines mathematical modeling and interpretable machine learning to study how biological systems respond to treatment.' } = Astro.props;
 const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
 const canonical = new URL(Astro.url.pathname, Astro.site);
-const contentSecurityPolicy = "default-src 'none'; script-src 'none'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; upgrade-insecure-requests";
+const contentSecurityPolicy = "default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; upgrade-insecure-requests";
 const links = [
   { href: withBase('/'), label: 'Home' }, { href: withBase('/about/'), label: 'About' },
   { href: withBase('/research/'), label: 'Research' }, { href: withBase('/publications/'), label: 'Publications' },
@@ -21,8 +21,9 @@ const links = [
     <meta name="referrer" content="strict-origin-when-cross-origin" />
     <meta name="description" content={description} />
     <meta name="color-scheme" content="light dark" />
-    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#10161d" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" data-scheme="light" />
+    <meta name="theme-color" content="#10161d" media="(prefers-color-scheme: dark)" data-scheme="dark" />
+    <script is:inline src={withBase('/theme.js')}></script>
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -41,6 +42,12 @@ const links = [
             <li><a href={href} aria-current={currentPath === (href.replace(/\/$/, '') || '/') ? 'page' : undefined}>{label}</a></li>
           ))}
         </ul>
+        <button class="theme-toggle" type="button" role="switch" aria-checked="false" aria-label="Dark theme" hidden>
+          <span class="theme-toggle-knob">
+            <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4" /><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8" /></svg>
+            <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 13.5A9 9 0 1 1 10.5 3.5a7.5 7.5 0 0 0 10 10z" /></svg>
+          </span>
+        </button>
       </nav>
     </header>
     <main id="main-content" tabindex="-1"><slot /></main>

@@ -95,7 +95,7 @@ Replace `src/assets/yonatan-degefu.jpeg` to update the homepage portrait. Astro 
 
 ### Change the design
 
-Edit `src/styles/site.css`. The variables at the top control the light palette, and the `prefers-color-scheme: dark` block below them controls the dark palette, which follows the visitor's system setting. A manual theme toggle would need JavaScript, which the content security policy currently blocks. The file also contains responsive layouts, keyboard focus indicators, and print styles.
+Edit `src/styles/site.css`. The variables at the top hold the palette, each written as `light-dark(light value, dark value)`. The site follows the visitor's system setting until they flip the sun/moon switch in the header. `public/theme.js` then stores that choice in the browser and sets `data-theme` on the page, so it applies across pages and visits. The file also contains responsive layouts, keyboard focus indicators, and print styles.
 
 ## Check and publish
 
@@ -132,7 +132,7 @@ The website generates static HTML and CSS. It has no application database, sign-
 - Dependabot is configured to open weekly npm update pull requests after its configuration is pushed to GitHub.
 - Install from the lockfile with `npm ci --ignore-scripts`. The current static build does not require dependency lifecycle scripts.
 - Keep credentials out of source files and public assets.
-- Production HTML includes a content security policy and referrer policy in metadata. Scripts, child frames, forms, and page network connections are blocked; styles and images load from the same origin.
+- Production HTML includes a content security policy and referrer policy in metadata. Scripts load only from the site's own files (currently just `public/theme.js`); inline and third-party scripts, child frames, forms, and page network connections are blocked; styles and images load from the same origin.
 - GitHub Pages does not apply `vercel.json`. Its HTTP response headers are controlled by GitHub; the Vercel-specific anti-framing and permissions headers are not configured by this Pages workflow.
 - If adding interactive JavaScript, forms, analytics, external images, or fonts, review and test the policy as part of that change.
 

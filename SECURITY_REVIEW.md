@@ -69,3 +69,7 @@ Pages builds use the GitHub domain and repository prefix. Navigation, figures, C
 The upstream picomatch build-tool advisory documented above remains unpatched. The hosting change adds no application server handlers or visitor-supplied glob patterns.
 
 The Pages-path release passed static checks for canonical URLs, current navigation, local asset links, the exact CV PDF, and the metadata CSP. All 15 page/viewport browser checks passed without custom response headers, with every image decoded and no page errors or horizontal overflow. A separate root-path build also passed for local and optional Vercel compatibility. Following explicit user approval, GitHub Pages was configured for GitHub Actions at https://yonaneg.github.io/academic-website/. The live deployment must be verified separately before handoff.
+
+## Theme switch — November 22, 2026
+
+A light/dark switch was added to the header. It needs one script, `public/theme.js`, served as a separate file from the site's own origin. The CSP `script-src` changed from `'none'` to `'self'` in both the page metadata and `vercel.json`; inline scripts, `eval`, and scripts from other origins remain blocked. The script reads and writes one `localStorage` key (`theme`) and makes no network requests. Without the script, the page still follows the system color setting and the switch stays hidden.
