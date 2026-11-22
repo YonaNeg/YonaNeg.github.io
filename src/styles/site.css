@@ -72,7 +72,7 @@ main { padding-block: 3rem 4.5rem; min-height: 70vh; }
 .site-footer { border-top: 1px solid var(--line); padding-block: 1.8rem; display: flex; justify-content: space-between; gap: 2rem; font-size: .8rem; }
 .footer-name { color: var(--ink); text-decoration: none; font-weight: 600; }
 .site-footer p { color: var(--muted); margin-top: .3rem; }
-.footer-contact { text-align: right; }
+.footer-contact { text-align: right; display: flex; flex-direction: column; justify-content: flex-end; }
 .academic-intro { padding-bottom: 2rem; border-bottom: 1px solid var(--line); }
 .academic-intro-with-portrait { display: grid; grid-template-columns: minmax(0, 1fr) 220px; gap: 2.5rem; align-items: center; }
 .intro-copy { min-width: 0; }
