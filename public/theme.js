@@ -20,6 +20,12 @@
 
   apply();
   system.addEventListener('change', () => { if (!choice) apply(); });
+  // A choice made in another open tab of the site applies here too.
+  addEventListener('storage', (event) => {
+    if (event.key !== 'theme') return;
+    choice = event.newValue === 'light' || event.newValue === 'dark' ? event.newValue : null;
+    apply();
+  });
 
   document.addEventListener('DOMContentLoaded', () => {
     const toggle = document.querySelector('.theme-toggle');
