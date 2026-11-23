@@ -13,6 +13,9 @@ node_modules/
 *.pem
 *.key
 
+# Keep the full-resolution portrait out of future commits
+/src/assets/yonatan-degefu.jpeg
+
 # Logs and editor state
 *-debug.log*
 *-error.log*

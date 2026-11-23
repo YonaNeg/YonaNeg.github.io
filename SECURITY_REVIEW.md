@@ -73,3 +73,9 @@ The Pages-path release passed static checks for canonical URLs, current navigati
 ## Theme switch — November 22, 2026
 
 A light/dark switch was added to the header. It needs one script, `public/theme.js`, served as a separate file from the site's own origin. The CSP `script-src` changed from `'none'` to `'self'` in both the page metadata and `vercel.json`; inline scripts, `eval`, and scripts from other origins remain blocked. The script reads and writes one `localStorage` key (`theme`) and makes no network requests. Without the script, the page still follows the system color setting and the switch stays hidden.
+
+## Portrait and site review — November 22, 2026
+
+The production build uses a 480 × 720 WebP portrait. Its only WebP chunk contains pixel data. The site's crawler rules cover the current and previous portrait URLs while allowing the academic pages and publication figures to be indexed. Visitors can still save or screenshot the portrait.
+
+The GitHub Pages homepage returned HTTPS with strict transport security and a content security policy in the HTML. The site accepts no visitor submissions. The dependency audit reported zero known vulnerabilities. GitHub withdrew the picomatch advisory from the November 17 review on November 18. [GitHub advisory record](https://github.com/advisories/GHSA-fc5q-39xc-vjpf)

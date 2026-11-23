@@ -43,7 +43,7 @@ Confirm the Deploy to GitHub Pages workflow succeeded. Do not stage `.env` files
 | Content | File |
 | --- | --- |
 | Home | `src/pages/index.astro` |
-| Portrait | `src/assets/yonatan-degefu.jpeg` |
+| Portrait | `public/images/portrait/yonatan-degefu.webp` (480 × 720, metadata stripped) |
 | About | `src/pages/about.astro` |
 | Research | `src/pages/research.astro` |
 | Publication records | `src/data/publications.ts` |

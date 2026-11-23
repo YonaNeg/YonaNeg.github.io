@@ -1,7 +1,5 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { Image } from 'astro:assets';
-import portrait from '../assets/yonatan-degefu.jpeg';
 import StateLandscape from '../components/sketches/StateLandscape.astro';
 import Isobologram from '../components/sketches/Isobologram.astro';
 import DecisionTree from '../components/sketches/DecisionTree.astro';
@@ -37,7 +35,7 @@ const selectedPublications = publications.filter(({ selected }) => selected);
       </nav>
     </div>
     <div class="portrait-frame">
-      <Image src={portrait} alt="Yonatan N. Degefu" width={480} format="webp" quality={85} loading="eager" fetchpriority="high" class="profile-portrait" />
+      <img src={withBase('/images/portrait/yonatan-degefu.webp')} alt="Yonatan N. Degefu" width="480" height="720" loading="eager" fetchpriority="high" class="profile-portrait" />
     </div>
   </section>
 

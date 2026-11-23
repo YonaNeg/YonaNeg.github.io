@@ -51,11 +51,11 @@ src/
   components/PublicationEntry.astro  Shared publication layout
   components/sketches/       Inline SVG research sketches, colored by the theme
   data/publications.ts       Publication records and homepage selections
-  assets/yonatan-degefu.jpeg  Homepage portrait, optimized at build time
   styles/site.css            Shared design, mobile and print styles
 public/
   favicon.svg                Academic profile favicon
   images/publications/       Original publication figures
+  images/portrait/           Small public copy of the homepage portrait
   files/cv.pdf               Updated downloadable CV
 astro.config.mjs              Site URL, hosting path, and static build configuration
 .github/workflows/deploy.yml   GitHub Pages build and deployment
@@ -91,7 +91,7 @@ Everything in `public/` is published. Store only intended public assets there.
 
 ### Add a photo
 
-Replace `src/assets/yonatan-degefu.jpeg` to update the homepage portrait. Astro generates an optimized image at build time. The desktop layout places the portrait beside the introduction; the phone layout places it above the text. Adjust its display dimensions and framing in `src/styles/site.css`.
+Keep the original photo outside the repository. To update the homepage portrait, export a 480 × 720 WebP with metadata stripped and replace `public/images/portrait/yonatan-degefu.webp`. Visitors can save the displayed copy. The site's `robots.txt` asks crawlers to skip the portrait. The desktop and phone framing is set in `src/styles/site.css`.
 
 ### Change the design
 
